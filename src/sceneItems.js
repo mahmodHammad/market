@@ -3,6 +3,7 @@ import { scene,camera } from "./setup";
 import { loadModel } from "./ModelLoader";
 const earth = require("./earth.glb").default;
 
+let earthModel
 function addLights() {
   const amplight = new THREE.AmbientLight("#ffffff", 0.9);
   let lightBack = new THREE.SpotLight(0xffffff, 1);
@@ -17,7 +18,6 @@ function addLights() {
   // scene.add( new THREE.SpotLightHelper(lightBack,"#ff00cc") );
   // scene.add( new THREE.SpotLightHelper( lightFront ,"#ccff00"));
 }
-
 const addItem = () => {
   loadModel(earth , {x:0,y:0,z:0})
     .then((e) => {
@@ -41,6 +41,8 @@ const addItem = () => {
           gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
       }
       `
+
+      earthModel=e.scene.getChildByName("earthblack")
       console.log("earthhhh", e.scene.getChildByName("earthblack"))
       console.log("earthhhh", e.scene.getObjectByName("Mundo_1"))
       console.log("earthhhh", e.scene)
@@ -55,9 +57,8 @@ const addItem = () => {
         "p":   { type: "f", value: 2.9 },
         glowColor: { type: "c", value: new THREE.Color(0xffffff) },
         viewVector: { type: "v3", value: camera.position },
-        // Color:new THREE.Color(0x333333),
         side: THREE.BackSide,
-		blending: THREE.AdditiveBlending,
+    		blending: THREE.AdditiveBlending,
         transparent:true,
         opacity:0.5
         
@@ -77,4 +78,4 @@ const addItem = () => {
   addLights();
 };
 
-export { addItem };
+export { addItem,earthModel };
