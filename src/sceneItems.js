@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { scene } from "./setup";
+import { scene,camera } from "./setup";
 import { loadModel } from "./ModelLoader";
 const earth = require("./earth.glb").default;
 
@@ -21,6 +21,57 @@ function addLights() {
 const addItem = () => {
   loadModel(earth , {x:0,y:0,z:0})
     .then((e) => {
+      const fragmentShader = `uniform vec3 glowColor;
+      varying float intensity;
+      void main() 
+      {
+        vec3 glow = glowColor * intensity;
+          gl_FragColor = vec4( glow, 1.0 );
+      }`
+      const vertexShader = `uniform vec3 viewVector;
+      uniform float c;
+      uniform float p;
+      varying float intensity;
+      void main() 
+      {
+          vec3 vNormal = normalize( normalMatrix * normal );
+        vec3 vNormel = normalize( normalMatrix * viewVector );
+        intensity = pow( c - dot(vNormal, vNormel), p );
+        
+          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+      }
+      `
+      console.log("earthhhh", e.scene.getChildByName("earthblack"))
+      console.log("earthhhh", e.scene.getObjectByName("Mundo_1"))
+      console.log("earthhhh", e.scene)
+      // e.scene.getChileByName("earthblack")
+      const surface = e.scene.getObjectByName("Mundo_1")
+      const mat = new THREE.ShaderMaterial( 
+        {
+          fragmentShader,
+          vertexShader,
+        uniforms :{ 
+        "c":   { type: "f", value: 0.2 },
+        "p":   { type: "f", value: 2.9 },
+        glowColor: { type: "c", value: new THREE.Color(0xffffff) },
+        viewVector: { type: "v3", value: camera.position },
+        // Color:new THREE.Color(0x333333),
+        side: THREE.BackSide,
+		blending: THREE.AdditiveBlending,
+        transparent:true,
+        opacity:0.5
+        
+      }})
+    const moonGlow = new THREE.Mesh( new THREE.SphereGeometry(3.7,100,100), mat);
+    // moonGlow.position = .position;
+	// moonGlow.scale.multiplyScalar(1.2);
+      moonGlow.position.set(0,0,-3)
+	scene.add( moonGlow );
+      // surface.material.fragmentShader=fragmentShader
+      // surface.material.vertexShader = vertexShader
+      // surface.material.transparent =true
+      // surface.material.uniforms=uniforms
+     
       scene.add(e.scene);
     })
   addLights();
