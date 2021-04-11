@@ -22,7 +22,7 @@ const addItem = () => {
   loadModel(earth , {x:0,y:0,z:0})
     .then((e) => {
      
-      scene.add(e.scene);
+      // scene.add(e.scene);
     })
   addLights();
   // oldAtmo()
@@ -62,8 +62,8 @@ function oldAtmo(){
       fragmentShader,
       vertexShader,
     uniforms :{ 
-    "c":   { type: "f", value: 0.2 },
-    "p":   { type: "f", value: 2.9 },
+    "c":   { type: "f", value: 0.5 },
+    "p":   { type: "f", value: 1.0 },
     glowColor: { type: "c", value: new THREE.Color(0xffffff) },
     viewVector: { type: "v3", value: camera.position },
     side: THREE.BackSide,
@@ -102,8 +102,8 @@ function renderAtmo() {
     {
         uniforms:       
       { 
-        "c":   { type: "f", value: 0.4 },
-        "p":   { type: "f", value: 1.5 }
+        "c":   { type: "f", value: 0.2 },
+        "p":   { type: "f", value: 3.2   }
       },
       vertexShader:  vertexShader,
       fragmentShader: fragmentShader
