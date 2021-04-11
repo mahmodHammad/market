@@ -5,7 +5,7 @@ const settings = {
   minZoom: 0.4,
   maxPolarAngle: 4,
   minPolarAngle: 0,
-  autoRotate: true,
+  autoRotate: false,
   autoRotateSpeed: 2,
   cameraTweenSpeed: 1500,
   TargetTweenSpeed: 2000,
