@@ -21,7 +21,6 @@ function addLights() {
 const addItem = () => {
   loadModel(earth , {x:0,y:0,z:0})
     .then((e) => {
-     
       scene.add(e.scene);
     })
   addLights();
@@ -50,13 +49,6 @@ function oldAtmo(){
       gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
   }
   `
-
-  // earthModel=e.scene.getChildByName("earthblack")
-  // console.log("earthhhh", e.scene.getChildByName("earthblack"))
-  // console.log("earthhhh", e.scene.getObjectByName("Mundo_1"))
-  // console.log("earthhhh", e.scene)
-  // // e.scene.getChileByName("earthblack")
-  // const surface = e.scene.getObjectByName("Mundo_1")
   const mat = new THREE.ShaderMaterial( 
     {
       fragmentShader,
@@ -77,9 +69,7 @@ moonGlow.renderOrder=-10
 moonGlow.material.depthTest = false
   moonGlow.position.set(0,0,0)
 scene.add( moonGlow );
- 
 }
-
 function renderAtmo() {
   const vertexShader = `
   varying vec3 vNormal;
@@ -92,7 +82,7 @@ function renderAtmo() {
   varying vec3 vNormal;
 void main() 
 {
-	float intensity = pow( 0.7 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 4.0 ); 
+	float intensity = pow( 0.6 - dot( vNormal, vec3( 0.0, 0.0, 0.5 ) ), 4.0 ); 
     gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;
 }`
 
