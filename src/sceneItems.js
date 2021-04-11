@@ -54,7 +54,7 @@ var customMaterial = new THREE.ShaderMaterial(
 
 	var sphereGeo = new THREE.SphereGeometry(2.9, 120, 32);
   const atmMesh = new THREE.Mesh(sphereGeo,customMaterial)
-  atmMesh.position.setX(0.1)
+  atmMesh.position.setX(0.12)
   atmMesh.renderOrder=-10
   // atmMesh.material.depthTest = false
   scene.add(atmMesh)
