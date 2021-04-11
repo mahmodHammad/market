@@ -6,7 +6,7 @@ const settings = {
   maxPolarAngle: 4,
   minPolarAngle: 0,
   autoRotate: true,
-  autoRotateSpeed: 5,
+  autoRotateSpeed: 2,
   cameraTweenSpeed: 1500,
   TargetTweenSpeed: 2000,
   voiceSpeed: 1,
