@@ -16,7 +16,7 @@ function addLights() {
   scene.add(lightFront);
 }
 const addItem = () => {
-  loadModel(earth , {x:0.05,y:0,z:0})
+  loadModel(earth , {x:0.1,y:0,z:0})
     .then((e) => {
       earthModel=e.scene.getChildByName("earthblack")
       scene.add(e.scene);
