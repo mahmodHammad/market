@@ -63,10 +63,13 @@ const addItem = () => {
         opacity:0.5
         
       }})
-    const moonGlow = new THREE.Mesh( new THREE.SphereGeometry(3.7,100,100), mat);
+    const moonGlow = new THREE.Mesh( new THREE.SphereGeometry(3,100,100), mat);
+    moonGlow.renderOrder=-10
+    moonGlow.material.depthTest = false
+    // e.scene.renderOrder=2
     // moonGlow.position = .position;
 	// moonGlow.scale.multiplyScalar(1.2);
-      moonGlow.position.set(0,0,-3)
+      moonGlow.position.set(0,0,0)
 	scene.add( moonGlow );
       // surface.material.fragmentShader=fragmentShader
       // surface.material.vertexShader = vertexShader
