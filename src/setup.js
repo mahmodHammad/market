@@ -16,6 +16,7 @@ const renderer = new THREE.WebGLRenderer({
   // alpha: true,
   powerPreference: "high-performance",
   antialias: true,
+  logarithmicDepthBuffer:true,
 });
 
 renderer.setPixelRatio(settings.quality);
