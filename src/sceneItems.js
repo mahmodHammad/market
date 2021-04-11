@@ -82,37 +82,56 @@ scene.add( moonGlow );
 
 function renderAtmo() {
   const vertexShader = `
-   varying vec3 vNormal;
+  varying vec3 vNormal;
   void main() 
   {
       vNormal = normalize( normalMatrix * normal );
       gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
   }`
   const fragmentShader = `
-  uniform float c;
-  uniform float p;
   varying vec3 vNormal;
-  void main() 
-  {
-    float intensity = pow( c - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), p ); 
+void main() 
+{
+	float intensity = pow( 0.7 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 4.0 ); 
     gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;
-  }`
+}`
 
-  var customMaterialAtmosphere = new THREE.ShaderMaterial( 
-    {
-        uniforms:       
-      { 
-        "c":   { type: "f", value: 0.2 },
-        "p":   { type: "f", value: 3.2   }
-      },
-      vertexShader:  vertexShader,
-      fragmentShader: fragmentShader
-    }   );
+var customMaterial = new THREE.ShaderMaterial( 
+	{
+	    uniforms: {  },
+		vertexShader,
+		fragmentShader,
+		side: THREE.BackSide,
+		blending: THREE.AdditiveBlending,
+		transparent: true
+	}   );
 
 	var sphereGeo = new THREE.SphereGeometry(2.9, 120, 32);
-  const atmMesh = new THREE.Mesh(sphereGeo,customMaterialAtmosphere)
+  const atmMesh = new THREE.Mesh(sphereGeo,customMaterial)
   atmMesh.renderOrder=-10
-  atmMesh.material.depthTest = false
+  // atmMesh.material.depthTest = false
   scene.add(atmMesh)
+  // heeyyyyyyyyyyyyyu
+  var renderTargetParameters = 
+		{ minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, 
+		  format: THREE.RGBFormat, stencilBuffer: false };
+	// var renderTarget = new THREE.WebGLRenderTarget( SCREEN_WIDTH, SCREEN_HEIGHT, renderTargetParameters );
+	// composer2 = new THREE.EffectComposer( renderer, renderTarget );
+	
+	// // prepare the secondary render's passes
+	// var render2Pass = new THREE.RenderPass( atmosphereScene, camera2 );
+	// composer2.addPass( render2Pass );
+	
+	// prepare final composer
+	// finalComposer = new THREE.EffectComposer( renderer, renderTarget );
+
+	// // prepare the final render's passes
+	// var renderModel = new THREE.RenderPass( scene, camera );
+	// finalComposer.addPass( renderModel );
+
+	// var effectBlend = new THREE.ShaderPass( THREE.AdditiveBlendShader, "tDiffuse1" );
+	// effectBlend.uniforms[ 'tDiffuse2' ].value = composer2.renderTarget2;
+	// effectBlend.renderToScreen = true;
+	// finalComposer.addPass( effectBlend );
 }
 export { addItem,earthModel };
