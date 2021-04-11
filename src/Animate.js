@@ -16,9 +16,9 @@ const startAnimationLoop = (e) => {
   generalTime = clock.elapsedTime;
 
   render();
-  if(earthModel){
-    // earthModel.rotateZ(-0.01)
-  }
+  // if(earthModel){
+  //   earthModel.rotateZ(0.01)
+  // }
 
   controls.update();
   stats.end();
