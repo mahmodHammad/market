@@ -27,12 +27,12 @@ const scene = new THREE.Scene();
 // scene.background = new THREE.Color(0xaaaaaa);
 // ----------------------------------------------> camera
 const camera = new THREE.PerspectiveCamera(
-  40, // fov = field of view
+  50, // fov = field of view
   width / height, // aspect ratio
   0.001, // near plane
   80000 // far plane
 );
-camera.position.set(0, 0, 14);
+camera.position.set(0, 0, 13);
 // ----------------------------------------------> controls
 
 const controls = new OrbitControls(camera, renderer.domElement);

@@ -20,9 +20,9 @@ const addItem = () => {
     .then((e) => {
       earthModel=e.scene.getChildByName("earthblack")
       scene.add(e.scene);
+      renderAtmo()
     })
   addLights();
-  renderAtmo()
 };
 
 
