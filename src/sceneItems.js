@@ -22,7 +22,7 @@ const addItem = () => {
   loadModel(earth , {x:0,y:0,z:0})
     .then((e) => {
      
-      // scene.add(e.scene);
+      scene.add(e.scene);
     })
   addLights();
   // oldAtmo()
@@ -111,8 +111,8 @@ function renderAtmo() {
 
 	var sphereGeo = new THREE.SphereGeometry(2.9, 120, 32);
   const atmMesh = new THREE.Mesh(sphereGeo,customMaterialAtmosphere)
-  // atmMesh.renderOrder=-10
-  // atmMesh.material.depthTest = false
+  atmMesh.renderOrder=-10
+  atmMesh.material.depthTest = false
   scene.add(atmMesh)
 }
 export { addItem,earthModel };
