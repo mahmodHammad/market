@@ -16,7 +16,7 @@ function addLights() {
   scene.add(lightFront);
 }
 const addItem = () => {
-  loadModel(earth , {x:0.4,y:0,z:0})
+  loadModel(earth , {x:0.1,y:0,z:0})
     .then((e) => {
       earthModel=e.scene.getChildByName("earthblack")
       scene.add(e.scene);
@@ -54,7 +54,7 @@ var customMaterial = new THREE.ShaderMaterial(
 
 	var sphereGeo = new THREE.SphereGeometry(2.9, 120, 32);
   const atmMesh = new THREE.Mesh(sphereGeo,customMaterial)
-  atmMesh.position.setX(0.4)
+  atmMesh.position.setX(0.1)
   atmMesh.renderOrder=-10
   // atmMesh.material.depthTest = false
   scene.add(atmMesh)

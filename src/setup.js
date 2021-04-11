@@ -34,6 +34,8 @@ const camera = new THREE.PerspectiveCamera(
   80000 // far plane
 );
 camera.position.set(0, 0, 13);
+// camera.lookAt(new THREE.Vector3(4,0,0))
+
 // ----------------------------------------------> controls
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -69,6 +71,7 @@ const handleWindowResize = () => {
   renderer.setSize(width, height);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
+
 };
 // ----------------------------------------------> setup
 const sceneSetup = (root) => {
