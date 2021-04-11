@@ -5,11 +5,11 @@ const earth = require("./earth.glb").default;
 
 let earthModel
 function addLights() {
-  const amplight = new THREE.AmbientLight("#ffffff", 0.9);
-  let lightBack = new THREE.SpotLight(0xffffff, 1);
-  let lightFront = new THREE.SpotLight(0xffffff, 1);
-  lightBack.position.set(2, 50, -7);
-  lightFront.position.set(-2, -30, 7);
+  const amplight = new THREE.AmbientLight("#ffffff", 0.8);
+  let lightBack = new THREE.PointLight(0xffffff, 0.2);
+  let lightFront = new THREE.PointLight(0xffffff, 0.2);
+  lightBack.position.set(2, 2, 7);
+  lightFront.position.set(-2, -2, 7);
 
   scene.add(amplight);
   scene.add(lightBack);
