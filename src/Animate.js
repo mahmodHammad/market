@@ -17,7 +17,7 @@ const startAnimationLoop = (e) => {
 
   render();
   if(earthModel){
-    earthModel.rotateZ(-0.01)
+    // earthModel.rotateZ(-0.01)
   }
 
   controls.update();
