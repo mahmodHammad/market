@@ -38,7 +38,7 @@ function renderAtmo() {
   varying vec3 vNormal;
 void main() 
 {
-	float intensity = pow( 0.7 - dot( vNormal, vec3( 0.0, 0.0, 0.5 ) ), 4.0 ); 
+	float intensity = pow( 0.64 - dot( vNormal, vec3( 0.0, 0.0, 0.5 ) ), 5.0 ); 
     gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;
 }`
 
@@ -52,7 +52,7 @@ var customMaterial = new THREE.ShaderMaterial(
 		transparent: true
 	}   );
 
-	var sphereGeo = new THREE.SphereGeometry(2.87, 120, 32);
+	var sphereGeo = new THREE.SphereGeometry(2.9, 120, 32);
   const atmMesh = new THREE.Mesh(sphereGeo,customMaterial)
   atmMesh.position.setX(0)
   atmMesh.renderOrder=-10
