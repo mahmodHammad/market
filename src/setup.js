@@ -60,6 +60,7 @@ function setupControls(speed) {
   controls.enableZoom=false
   controls.enableDamping = true;
   controls.dampingFactor = 0.05;
+  controls.target = new THREE.Vector3(0,0,0)
 }
 
 
