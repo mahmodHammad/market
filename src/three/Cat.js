@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { sceneSetup, scene } from "./setup";
 import { startAnimationLoop } from "./Animate";
 
-export default function Cat({ handleFullScreen }) {
+export default function Cat( ) {
   const textInput = useRef(null);
 
   useEffect(() => {
