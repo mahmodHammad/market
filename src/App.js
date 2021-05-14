@@ -28,6 +28,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // My components --------------------------------
 import Navbar from "./Navbar/Navbar";
 import Cat from "./three/Cat"
+import Shop from "./pages/shop/Shop"
 // import Footer from "./../shared/Footer/Footer";
 // import Home from "../pages/Home/Home";
 // import Projects from "../pages/Projects/Project";
@@ -60,18 +61,17 @@ export default class App extends Component {
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           <div
-            className="App"
             style={{ background: theme.palette.background.default }}
           >
             <BrowserRouter basename={process.env.PUBLIC_URL}>
               <Navbar
                 isDarkMode={this.state.isDarkMode}
               />
-<Cat/>
-              {/* <Switch>
-                <Route exact path="/" render={props => <Home {...props} />} />
-                <Route exact path="/Project/:id" component={Projects} />
-              </Switch> */}
+            
+              <Switch>
+                <Route exact path="/shop" component={Shop} />
+                <Route exact path="/" render={props => <Cat/>} />
+              </Switch>
               {/* <Footer /> */}
             </BrowserRouter>
           </div>

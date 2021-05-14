@@ -56,7 +56,7 @@ export default function CustomizedMenus() {
               fullWidth
               component={Link}
               to={{
-                pathname: "/",
+                pathname: "/shop",
                 state: {
                   scrollTo: "projects"
                 }

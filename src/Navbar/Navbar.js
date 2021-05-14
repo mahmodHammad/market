@@ -53,11 +53,10 @@ export default function Navbar({ props }) {
           <Toolbar>
             <div className={classes.logoContainer}>
               <IconButton onClick={()=>window.scrollTo(0, 0)} color="inherit" component={Link} to="/" size="large">
-                
                   <img
                   className={classes.logo}
                   src={logo}
-                  alt="Mahmoud Hammad"
+                  alt="Terraform"
                 />
                 
               </IconButton>
@@ -71,7 +70,7 @@ export default function Navbar({ props }) {
                 color="secondary"
                 component={Link}
                 to={{
-                  pathname: "/",
+                  pathname: "/shop",
                   state: {
                     scrollTo: "shop"
                   }
