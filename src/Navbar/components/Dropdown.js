@@ -62,25 +62,9 @@ export default function CustomizedMenus() {
                 }
               }}
             >
-              Projects
+              Shop
             </Button>
             <Divider />
-            {/* <Button
-              fullWidth
-              size="large"
-              color="secondary"
-              onClick={handleClose}
-              startIcon={<Mail />}
-              component={Link}
-              to={{
-                pathname: "/",
-                state: {
-                  scrollTo: "contact"
-                }
-              }}
-            >
-              Contacts
-            </Button> */}
           </Paper>
         </Grow>
       </ClickAwayListener>
