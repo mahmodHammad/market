@@ -40,11 +40,13 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     // overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: theme.palette.background.paper,
     borderRadius:10
   },
   gridList: {
-    borderRadius:10
+    borderRadius:10,
+    width: 500,
+    height: 410,
 
     // width: "100%",
     // height: 650,
