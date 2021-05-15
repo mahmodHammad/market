@@ -18,7 +18,10 @@ const useStyles = makeStyles(theme => ({
 
     // textAlign: "center"
   },
-  
+  button:{
+      margin:20,
+    float:"right"
+    }
 }));
 
 export default function Projec({ match }) {
@@ -30,20 +33,19 @@ export default function Projec({ match }) {
   return (
     <div className={classes.root}>
         <Container>
-      
+            <CartItem/>
             <Button
               className={classes.button}
               component={Link}
               href="#"
               target="_blank"
               fontSize="large"
-              color="secondary"
+              color="primary"
               variant="contained"
             //   startIcon={<OpenInNewIcon />}
             >
-              Add to cart
+              Checkout
             </Button>
-            <CartItem/>
         </Container>
     </div>
   );
