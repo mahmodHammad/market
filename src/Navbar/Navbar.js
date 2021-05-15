@@ -52,7 +52,7 @@ export default function Navbar({ props }) {
         <AppBar color="transparent" className={classes.nav}>
           <Toolbar>
             <div className={classes.logoContainer}>
-              <IconButton onClick={()=>window.scrollTo(0, 0)} color="inherit" component={Link} to="/" size="large">
+              <IconButton onClick={()=>window.scrollTo(0, 0)} color="secondary" component={Link} to="/" size="large">
                   <img
                   className={classes.logo}
                   src={logo}

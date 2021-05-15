@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: theme.palette.background.paper,
     borderRadius:10
   },
-  gridList: {
+gridList: {
     borderRadius:10,
     width: 500,
     height: 410,

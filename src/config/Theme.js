@@ -34,15 +34,15 @@ const dark = oldTheme => {
   
   const defaultMode = {
     primary: {
-      main: "#eee"
+      main: "#3c415c"
     },
     secondary: {
       light: "#FFC409 ",
-      main: "#FFa409",
+      main: "#b4a5a5",
       contrastText: "#000"
     },
     background: {
-      default: "#33f"
+      default: "#151515"
     },
     txt: {
       title: "#fff",

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
 // import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "./components/Gridlist"
-// import AllProjects from "../../config/Projects";
+import { Link } from "react-router-dom";
 
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
@@ -15,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     padding: 10,
     paddingTop: 160,
-    textAlign: "center"
+    // textAlign: "center"
   },
   img: {
     width: "100%",
@@ -23,10 +22,14 @@ const useStyles = makeStyles(theme => ({
     margin: "auto",
     borderRadius: 5
   },
+  info:{
+    color: theme.palette.txt.body,
+    marginTop:20
+  },
   header: {
-    fontSize: "2.4rem",
-    fontWeight: "bold",
-    textAlign: "center",
+    // fontSize: "2.4rem",
+    // fontWeight: "bold",
+    // textAlign: "center",
     color: theme.palette.txt.title
   },
   TechHeader: { fontSize: "1.4rem", letterSpacing: 1, marginTop: 7 },
@@ -50,43 +53,48 @@ const useStyles = makeStyles(theme => ({
     textShadow:"1px 1px 2px #0005",
     "&:hover": {
       textDecoration: "none"
-    }
+    },
+    float:"right"
   },
   "@media (max-width: 600px)": {
     root: { paddingTop: 130 },
-    header: {fontSize: "1.8rem"},
+    // header: {fontSize: "1.8rem"},
     TechHeader:{fontSize:"1.2rem"}
   }
 }));
 
 export default function Projec({ match }) {
   const classes = useStyles();
-  console.log();
-  const projId = match.params.id;
-//   const [info, setinfo] = useState({});
   useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
   });
 
   return (
     <div className={classes.root}>
-          <Typography align="center" className={classes.header} variant="h1">
-              Hello this is the shipping page
+        <Container>
+        <GridList/>
+        <Typography className={classes.info} >
+          THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.
             </Typography>
+
             <Button
               className={classes.button}
-              component={Link}
-              href="#"
-              target="_blank"
               fontSize="large"
               color="secondary"
               variant="contained"
               startIcon={<OpenInNewIcon />}
+
+              component={Link}
+                to={{
+                  pathname: "/checkout",
+                  state: {
+                    scrollTo: "shop"
+                  }
+                }}
             >
-              Visit The Website
+              Checkout
             </Button>
-     
-        <GridList/>
+        </Container>
     </div>
   );
 }

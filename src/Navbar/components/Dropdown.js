@@ -40,9 +40,10 @@ export default function CustomizedMenus() {
         aria-controls="customized-menu"
         aria-haspopup="true"
         variant="contained"
+        color="secondary"
         onClick={handleClick}
       >
-        <MenuIcon color="primary" />
+        <MenuIcon color="secondary" />
       </IconButton>
 
       <ClickAwayListener touchEvent="onTouchStart" onClickAway={handleClose}>
@@ -50,7 +51,7 @@ export default function CustomizedMenus() {
           <Paper variant="outlined" className={classes.dropdown}>
             <Button
               size="large"
-              color="secondary"
+              color="primary"
               onClick={handleClose}
               startIcon={<AccountTreeIcon />}
               fullWidth
