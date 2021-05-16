@@ -39,7 +39,6 @@ export default class App extends Component {
   render() {
     const { theme } = this;
     return (
-
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           <div

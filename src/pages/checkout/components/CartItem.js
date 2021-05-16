@@ -11,7 +11,7 @@ import p1 from "../../../assets/p1.jpeg"
 import p2 from "../../../assets/p2.jpeg"
 import p3 from "../../../assets/l2.jpeg"
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import { TimeToLeaveRounded } from '@material-ui/icons';
+// import { TimeToLeaveRounded } from '@material-ui/icons';j
 
 const data=[
     {id:"1234",title:"EM TEE",quan:1,size:"XL", price:20,img:p1},

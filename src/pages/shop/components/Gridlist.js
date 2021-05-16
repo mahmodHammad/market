@@ -2,37 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import p1 from "../../../assets/p1.jpeg"
-import p2 from "../../../assets/p2.jpeg"
-import l1 from "../../../assets/l1.jpeg"
-import l2 from "../../../assets/l2.jpeg"
-const tileData = [
-    {
-      img: l1,
-      title: 'Image',
-      author: 'author',
-      cols: 2,
-    },
-    {
-        img: p2,
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-      },
-    {
-        img: l2,
-        title: 'Image',
-        author: 'author',
-        cols: 2,
-      },
-      {
-        img: p1,
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-      },
-      
-  ];
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +25,7 @@ gridList: {
 }));
 
  
-export default function ImageGridList() {
+export default function ImageGridList({tileData}) {
   const classes = useStyles();
 
   return (

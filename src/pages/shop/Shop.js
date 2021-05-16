@@ -9,6 +9,10 @@ import GridList from "./components/Gridlist"
 import { Link } from "react-router-dom";
 
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
+import p1 from "../../assets/p1.jpeg"
+import p2 from "../../assets/p2.jpeg"
+import l1 from "../../assets/l1.jpeg"
+import l2 from "../../assets/l2.jpeg"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -54,7 +58,7 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       textDecoration: "none"
     },
-    float:"right"
+    // float:"right"
   },
   "@media (max-width: 600px)": {
     root: { paddingTop: 130 },
@@ -62,6 +66,116 @@ const useStyles = makeStyles(theme => ({
     TechHeader:{fontSize:"1.2rem"}
   }
 }));
+
+const data = [
+{
+  id:"prod1",
+  title:"hello",
+  description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
+  images:[
+    {
+      img: l1,
+      alt: 'Image',
+      cols: 2,
+    },
+    {
+        img: p2,
+        alt: 'Image',
+        cols: 1,
+      },
+    {
+        img: l2,
+        alt: 'Image',
+        cols: 2,
+      },
+      {
+        img: p1,
+        alt: 'Image',
+        cols: 1,
+      },
+  ]
+},
+{
+  id:"prod1",
+  title:"hello",
+  description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
+  images:[
+    {
+      img: l1,
+      alt: 'Image',
+      cols: 2,
+    },
+    {
+        img: p2,
+        alt: 'Image',
+        cols: 1,
+      },
+    {
+        img: l2,
+        alt: 'Image',
+        cols: 2,
+      },
+      {
+        img: p1,
+        alt: 'Image',
+        cols: 1,
+      },
+  ]
+},
+{
+  id:"prod1",
+  title:"hello",
+  description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
+  images:[
+    {
+      img: l1,
+      alt: 'Image',
+      cols: 2,
+    },
+    {
+        img: p2,
+        alt: 'Image',
+        cols: 1,
+      },
+    {
+        img: l2,
+        alt: 'Image',
+        cols: 2,
+      },
+      {
+        img: p1,
+        alt: 'Image',
+        cols: 1,
+      },
+  ]
+},{
+  id:"prod1",
+  title:"hello",
+  description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
+  images:[
+    {
+      img: l1,
+      alt: 'Image',
+      cols: 2,
+    },
+    {
+        img: p2,
+        alt: 'Image',
+        cols: 1,
+      },
+    {
+        img: l2,
+        alt: 'Image',
+        cols: 2,
+      },
+      {
+        img: p1,
+        alt: 'Image',
+        cols: 1,
+      },
+  ]
+},
+]
 
 export default function Projec({ match }) {
   const classes = useStyles();
@@ -72,10 +186,11 @@ export default function Projec({ match }) {
   return (
     <div className={classes.root}>
         <Container>
-        <GridList/>
-        <Typography className={classes.info} >
-          THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.
-            </Typography>
+          {data.map(product=><div>
+            <GridList tileData={product.images}/>
+              <Typography className={classes.info} >
+                {product.description}
+              </Typography>
 
             <Button
               className={classes.button}
@@ -83,7 +198,6 @@ export default function Projec({ match }) {
               color="secondary"
               variant="contained"
               startIcon={<OpenInNewIcon />}
-
               component={Link}
                 to={{
                   pathname: "/checkout",
@@ -94,6 +208,8 @@ export default function Projec({ match }) {
             >
               Checkout
             </Button>
+          </div>)}
+        
         </Container>
     </div>
   );
