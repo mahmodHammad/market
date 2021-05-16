@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: "#1b1a20",
         boxSizing: "border-box",      
         transition: "right 0.2s",
-    }
+    },
 }))
 
 

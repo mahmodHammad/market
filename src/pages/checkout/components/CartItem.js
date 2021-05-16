@@ -7,23 +7,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import p1 from "../../../assets/p1.jpeg"
-import p2 from "../../../assets/p2.jpeg"
-import p3 from "../../../assets/l2.jpeg"
+
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 // import { TimeToLeaveRounded } from '@material-ui/icons';j
-
-const data=[
-    {id:"1234",title:"EM TEE",quan:1,size:"XL", price:20,img:p1},
-    {id:"1234",title:"ME FEE",quan:3,size:"XL", price:30,img:p2},
-    {id:"1234",title:"SHI ESS",quan:1,size:"XL", price:24,img:p3},
-]
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     // maxWidth: '36ch',
-    backgroundColor:"#aaa2",
+    // backgroundColor:"#aaa2",
   },
   title:{
     color: theme.palette.txt.title,
@@ -54,12 +46,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AlignItemsList() {
+export default function CartItem({cartData}) {
   const classes = useStyles();
 
   return (
     <List className={classes.root}>
-        {data.map((d,index)=><React.Fragment> 
+        {cartData.map((d,index)=><React.Fragment> 
             <ListItem alignItems="center" className={classes.listItemStyle}>
                 <ListItemAvatar>
                     {/* <img src={p1} width={60} height={60}/> */}
@@ -85,7 +77,7 @@ export default function AlignItemsList() {
                     </Typography>
                     </ListItemSecondaryAction>
             </ListItem>
-            {index !==data.length-1?<Divider variant="inset" component="li" className={classes.dividerStyle}/>:null
+            {index !==cartData.length-1?<Divider  component="li" className={classes.dividerStyle}/>:null
  }
              </React.Fragment>
   )}

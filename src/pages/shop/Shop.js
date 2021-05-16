@@ -9,10 +9,7 @@ import GridList from "./components/Gridlist"
 import { Link } from "react-router-dom";
 
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
-import p1 from "../../assets/p1.jpeg"
-import p2 from "../../assets/p2.jpeg"
-import l1 from "../../assets/l1.jpeg"
-import l2 from "../../assets/l2.jpeg"
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -67,37 +64,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const data = [
-{
-  id:"prod1",
-  title:"hello",
-  description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
-  images:[
-    {
-      img: l1,
-      alt: 'Image',
-      cols: 2,
-    },
-    {
-        img: p2,
-        alt: 'Image',
-        cols: 1,
-      },
-    {
-        img: l2,
-        alt: 'Image',
-        cols: 2,
-      },
-      {
-        img: p1,
-        alt: 'Image',
-        cols: 1,
-      },
-  ]
-}
-]
 
-export default function Projec({ match }) {
+
+export default function Projec({ products }) {
   const classes = useStyles();
   useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
@@ -106,7 +75,7 @@ export default function Projec({ match }) {
   return (
     <div className={classes.root}>
         <Container>
-          {data.map(product=><div>
+          {products.map(product=><div>
             <GridList tileData={product.images}/>
               <Typography className={classes.info} >
                 {product.description}

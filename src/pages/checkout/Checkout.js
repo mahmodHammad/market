@@ -12,8 +12,8 @@ import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: 10,
-    paddingTop: 160,
+    // padding: 10,
+    paddingTop: 90,
     color: theme.palette.txt.body,
 
     // textAlign: "center"
@@ -24,7 +24,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function Projec({ match }) {
+
+export default function Projec({ cartData }) {
   const classes = useStyles();
   useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
@@ -33,8 +34,8 @@ export default function Projec({ match }) {
   return (
     <div className={classes.root}>
         <Container>
-            <CartItem/>
-            <Button
+            <CartItem cartData={cartData}/>
+            {/* <Button
               className={classes.button}
               component={Link}
               href="#"
@@ -45,7 +46,7 @@ export default function Projec({ match }) {
             //   startIcon={<OpenInNewIcon />}
             >
               Checkout
-            </Button>
+            </Button> */}
         </Container>
     </div>
   );
