@@ -36,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
   avLarge:{
     width: theme.spacing(12),
     height: theme.spacing(12),
-    marginRight:15
+    marginRight:15,
+    borderRadius: 5
   },
   listItemStyle:{
       paddingTop:20,
@@ -46,6 +47,10 @@ const useStyles = makeStyles((theme) => ({
   dividerStyle:{
       background:"#fff3",
     //   color:"#fff"
+  },
+  price:{
+    top: "30%",
+    transform: "translateY(0)"
   }
 }));
 
@@ -74,8 +79,8 @@ export default function AlignItemsList() {
                     </Typography>
                 }
                 />
-                <ListItemSecondaryAction>
-                    <Typography aria-label="comments">
+                <ListItemSecondaryAction className={classes.price}>
+                    <Typography aria-label="comments" >
                     ${d.price} USD
                     </Typography>
                     </ListItemSecondaryAction>
