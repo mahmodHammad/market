@@ -9,7 +9,7 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
 import IconButton from "@material-ui/core/IconButton";
 import Dropdwon from "./components/Dropdown";
-import logo from "../Lgog.jpeg"
+import logo from "../assets/logo.png"
 
 const useStyles = makeStyles(theme => ({
   logoContainer: {

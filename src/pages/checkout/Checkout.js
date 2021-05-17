@@ -1,51 +1,147 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Paper from '@material-ui/core/Paper';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import AddressForm from './AddressForm';
+import PaymentForm from './PaymentForm';
+import Review from './Review';
 
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
-import Container from "@material-ui/core/Container";
-// import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import CartItem from "./components/Cart"
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://material-ui.com/">
+//         Your Website
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
 
-import { makeStyles } from "@material-ui/core/styles";
-const useStyles = makeStyles(theme => ({
-  root: {
-    // padding: 10,
-    paddingTop: 110,
-    color: theme.palette.txt.body,
-
-    // textAlign: "center"
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    position: 'relative',
   },
-  button:{
-      margin:20,
-    float:"right"
-    }
+  layout: {
+    width: 'auto',
+    // marginTop:120,
+    display:"flex",
+    alignItems:"center",
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      width: 300,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginTop: theme.spacing(6),
+      marginBottom: theme.spacing(6),
+      padding: theme.spacing(3),
+    },
+  },
+  stepper: {
+    padding: theme.spacing(3, 0, 5),
+  },
+  buttons: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+  },
 }));
 
+const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-export default function Projec({ cartData }) {
+function getStepContent(step) {
+  switch (step) {
+    case 0:
+      return <AddressForm />;
+    case 1:
+      return <PaymentForm />;
+    case 2:
+      return <Review />;
+    default:
+      throw new Error('Unknown step');
+  }
+}
+
+export default function Checkout() {
   const classes = useStyles();
-  useEffect(() => {
-    // const info = AllProjects.find(e => e.id === projId);
-  });
+  const [activeStep, setActiveStep] = React.useState(0);
+
+  const handleNext = () => {
+    setActiveStep(activeStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep(activeStep - 1);
+  };
 
   return (
-    <div className={classes.root}>
-        <Container>
-            {/* <Button
-              className={classes.button}
-              component={Link}
-              href="#"
-              target="_blank"
-              fontSize="large"
-              color="primary"
-              variant="contained"
-            //   startIcon={<OpenInNewIcon />}
-            >
-              Checkout
-            </Button> */}
-        </Container>
-    </div>
+    <React.Fragment>
+      <CssBaseline />
+      
+      <main className={classes.layout}>
+        <Paper className={classes.paper}>
+          <Typography component="h1" variant="h4" align="center">
+            Checkout
+          </Typography>
+          <Stepper activeStep={activeStep} className={classes.stepper}>
+            {steps.map((label) => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+          <React.Fragment>
+            {activeStep === steps.length ? (
+              <React.Fragment>
+                <Typography variant="h5" gutterBottom>
+                  Thank you for your order.
+                </Typography>
+                <Typography variant="subtitle1">
+                  Your order number is #2001539. We have emailed your order confirmation, and will
+                  send you an update when your order has shipped.
+                </Typography>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                {getStepContent(activeStep)}
+                <div className={classes.buttons}>
+                  {activeStep !== 0 && (
+                    <Button onClick={handleBack} className={classes.button}>
+                      Back
+                    </Button>
+                  )}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleNext}
+                    className={classes.button}
+                  >
+                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                  </Button>
+                </div>
+              </React.Fragment>
+            )}
+          </React.Fragment>
+        </Paper>
+      </main>
+    </React.Fragment>
   );
 }

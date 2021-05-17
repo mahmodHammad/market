@@ -54,6 +54,9 @@ const dark = oldTheme => {
     card: { bg: "#111" },
     contact: { bg: "#111", methods: "#202020", icons: "#FFC107" },
     div: { default: "#666" }
+
+
+    
   };
   
   export { light, dark ,defaultMode };
