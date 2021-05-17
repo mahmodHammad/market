@@ -5,15 +5,14 @@ import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
 // import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import Cart from "./components/Cart"
-import CartItem from "./components/CartItem"
+import CartItem from "./components/Cart"
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
   root: {
     // padding: 10,
-    paddingTop: 90,
+    paddingTop: 110,
     color: theme.palette.txt.body,
 
     // textAlign: "center"
@@ -34,7 +33,6 @@ export default function Projec({ cartData }) {
   return (
     <div className={classes.root}>
         <Container>
-            <CartItem cartData={cartData}/>
             {/* <Button
               className={classes.button}
               component={Link}

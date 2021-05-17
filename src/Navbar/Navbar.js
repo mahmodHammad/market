@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "left"
   },
   logo: { height: 60, margin: 3 },
-  nav: { background: "#333"},
+  nav: { background: "#000"},
   study: {
     padding: "2px 10px",
     margin: 2,
@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 function HideOnScroll(props) {
   const { children, window } = props;
+
   // Note that you normally won't need to set the window ref as useScrollTrigger
   // will default to window.
   // This is only being set here because the demo is in an iframe.

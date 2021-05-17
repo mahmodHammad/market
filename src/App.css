@@ -1,7 +1,7 @@
 body {
   margin: 0;
   /* overflow: hidden; */
-  background: radial-gradient(circle, #eaeaea 0%, #777 100%);
+  /* background: radial-gradient(circle, #eaeaea 0%, #777 100%); */
 }
 
 canvas {
@@ -10,4 +10,7 @@ canvas {
 
 .App{
   width: 30vw !important;
+}
+.MuiDrawer-paper{
+  background: #050505 !important;
 }

@@ -13,9 +13,9 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    // width: '90vw',
     // maxWidth: '36ch',
-    // backgroundColor:"#aaa2",
+    // backgroundColor:"#0009",
   },
   title:{
     color: theme.palette.txt.title,
@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.txt.body,
   },
   avLarge:{
-    width: theme.spacing(12),
-    height: theme.spacing(12),
+    width: theme.spacing(8),
+    height: theme.spacing(8),
     marginRight:15,
     borderRadius: 5
   },
@@ -41,46 +41,42 @@ const useStyles = makeStyles((theme) => ({
     //   color:"#fff"
   },
   price:{
-    top: "30%",
+    top: "28%",
     transform: "translateY(0)"
+  },
+  priceLable:{
+
   }
 }));
 
-export default function CartItem({cartData}) {
+export default function CartItem({img,title,quantity,price}) {
   const classes = useStyles();
 
   return (
-    <List className={classes.root}>
-        {cartData.map((d,index)=><React.Fragment> 
-            <ListItem alignItems="center" className={classes.listItemStyle}>
-                <ListItemAvatar>
-                    {/* <img src={p1} width={60} height={60}/> */}
-                <Avatar alt="Remy Sharp" src={d.img} className={classes.avLarge}/>
-                </ListItemAvatar>
-                <ListItemText
-                primary={d.title}
-                className={classes.title}
-                secondary={
-                    <Typography
-                        component="span"
-                        variant="body2"
-                        className={classes.inline}
-                        color="textPrimary"
-                    >
-                        Quantity: {d.quan}
-                    </Typography>
-                }
-                />
-                <ListItemSecondaryAction className={classes.price}>
-                    <Typography aria-label="comments" >
-                    ${d.price} USD
-                    </Typography>
-                    </ListItemSecondaryAction>
-            </ListItem>
-            {index !==cartData.length-1?<Divider  component="li" className={classes.dividerStyle}/>:null
- }
-             </React.Fragment>
-  )}
-    </List>
+    <ListItem alignItems="center" className={classes.listItemStyle}>
+        <ListItemAvatar>
+            {/* <img src={p1} width={60} height={60}/> */}
+        <Avatar alt="Remy Sharp" src={img} className={classes.avLarge}/>
+        </ListItemAvatar>
+        <ListItemText
+        primary={title}
+        className={classes.title}
+        secondary={
+            <Typography
+                component="span"
+                variant="body2"
+                className={classes.inline}
+                color="textPrimary"
+            >
+                Quantity: {quantity}
+            </Typography>
+        }
+        />
+        <ListItemSecondaryAction className={classes.price}>
+            <Typography variant="body2" aria-label="comments"className={classes.inline} >
+            ${price} USD
+            </Typography>
+            </ListItemSecondaryAction>
+    </ListItem>
   );
 }

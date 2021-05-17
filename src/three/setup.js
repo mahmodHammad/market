@@ -25,7 +25,7 @@ function render() {
 }
 // ----------------------------------------------> scene
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xaaaaaa);
+scene.background = new THREE.Color(0x050505);
 // ----------------------------------------------> camera
 const camera = new THREE.PerspectiveCamera(
   50, // fov = field of view

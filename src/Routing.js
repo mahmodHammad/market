@@ -5,16 +5,17 @@ import Shop from "./pages/shop/Shop"
 import Checkout from "./pages/checkout/Checkout"
 import { makeStyles } from "@material-ui/core/styles";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Drawer from "./Navbar/components/Drawer"
+import Button from '@material-ui/core/Button';
+import "./App.css";
+
 
 import p1 from "./assets/p1.jpeg"
 import p2 from "./assets/p2.jpeg"
 import l1 from "./assets/l1.jpeg"
 import l2 from "./assets/l2.jpeg"
 
-const cartData=[
-  {id:"1234",title:"EM TEE",quan:1,size:"XL", price:20,img:p1},
-  {id:"1234",title:"ME FEE",quan:3,size:"XL", price:30,img:p2},
-]
+
 const products = [
   {
     id:"prod1",
@@ -51,8 +52,6 @@ const useStyles = makeStyles(theme => ({
     // padding: 10,
     paddingTop: 90,
     color: theme.palette.txt.body,
-
-    // textAlign: "center"
   },
   button:{
       margin:20,
@@ -63,7 +62,44 @@ const useStyles = makeStyles(theme => ({
 
 export default function Projec({ Cart,theme }) {
   const classes = useStyles();
+  const [draweOpen, SetdraweOpen] = useState(false);
+  const [cartData, SetcartData] = useState([
+    {id:"12345",title:"EM TEE",quan:1,size:"XL", price:20,avatar:p1},
+    {id:"12346",title:"EM TEE",quan:1,size:"XL", price:20,avatar:p1},
+    {id:"1234",title:"EM TEE",quan:1,size:"XL", price:20,avatar:p1},
+  ]);
+ 
+  const toggleDrawer = ( open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    SetdraweOpen( open );
+  };
+
+  const addToCart = item=>{
+    const {id} = item
+    const indd = cartData.findIndex(cd=>id===cd.id)
+    console.log("ITEM:",item)
+    if(indd !==-1){
+      // EXISTED
+     cartData[indd].quan +=1
+
+      SetcartData(cartData)
+
+    }else{
+      console.log("Already existed...")
+      item.quan=1
+// WILL BE REMOVED
+
+      SetcartData([...cartData,item])
+
+    }
+console.log("EX INDECX IS ",indd)
+    SetdraweOpen( true );
+  }
+
   useEffect(() => {
+  
     // const info = AllProjects.find(e => e.id === projId);
   });
 
@@ -74,10 +110,13 @@ export default function Projec({ Cart,theme }) {
             <BrowserRouter>
               <Navbar
                 isDarkMode={true}
+                draweOpen={draweOpen}
+                toggleDrawer={toggleDrawer}
               />
-            
+            <Drawer toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
+
               <Switch>
-                <Route exact path="/shop" render={props => <Shop products={products}/>}/>
+                <Route exact path="/shop" render={props => <Shop addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>
                 <Route exact path="/" render={props => <Cat/>} />
                 <Route exact path="/checkout" render={props => <Checkout cartData={cartData}/>} />
               </Switch>

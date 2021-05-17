@@ -42,7 +42,8 @@ const dark = oldTheme => {
       contrastText: "#000"
     },
     background: {
-      default: "#151515"
+      // default: "#151515"
+      default: "#050505"
     },
     txt: {
       title: "#fff",

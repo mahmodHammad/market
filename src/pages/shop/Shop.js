@@ -9,7 +9,7 @@ import GridList from "./components/Gridlist"
 import { Link } from "react-router-dom";
 
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
-
+import Drawer from "../../Navbar/components/Drawer"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function Projec({ products }) {
+export default function Projec({ addToCart,products,toggleDrawer }) {
   const classes = useStyles();
   useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
@@ -87,16 +87,18 @@ export default function Projec({ products }) {
               color="secondary"
               variant="contained"
               startIcon={<OpenInNewIcon />}
-              component={Link}
-                to={{
-                  pathname: "/checkout",
-                  state: {
-                    scrollTo: "shop"
-                  }
-                }}
+              onClick={()=>addToCart( product)}
+              // component={Link}
+              //   to={{
+              //     pathname: "/checkout",
+              //     state: {
+              //       scrollTo: "shop"
+              //     }
+              //   }}
             >
-              Checkout
-            </Button>
+              Add to cart
+            </Button> 
+
           </div>)}
         
         </Container>
