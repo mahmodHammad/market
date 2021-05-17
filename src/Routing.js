@@ -14,14 +14,14 @@ import p1 from "./assets/p1.jpeg"
 import p2 from "./assets/p2.jpeg"
 import l1 from "./assets/l1.jpeg"
 import l2 from "./assets/l2.jpeg"
-
+import Avatar from "./assets/avatar.jpeg"
 
 const products = [
   {
     id:"prod1",
     title:"hello",
     price:20,
-    avatar:p1,
+    avatar:Avatar,
     description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
     images:[
       {
@@ -62,11 +62,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function Projec({ Cart,theme }) {
   const classes = useStyles();
-  const [draweOpen, SetdraweOpen] = useState(false);
+  const [draweOpen, SetdraweOpen] = useState(true);
   const [cartData, SetcartData] = useState([
-    {id:"12345",title:"EM TEE",quan:1,size:"XL", price:20,avatar:p1},
-    {id:"12346",title:"EM TEE",quan:1,size:"XL", price:20,avatar:p1},
-    {id:"1234",title:"EM TEE",quan:1,size:"XL", price:20,avatar:p1},
+    {id:"12345",title:"EM TEE",quan:1,size:"XL", price:20,avatar:Avatar},
+    {id:"12346",title:"EM TEE",quan:1,size:"XL", price:20,avatar:Avatar},
+    {id:"1234",title:"EM TEE",quan:1,size:"XL", price:20,avatar:Avatar},
   ]);
  
   const toggleDrawer = ( open) => (event) => {

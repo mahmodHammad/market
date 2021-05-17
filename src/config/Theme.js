@@ -34,7 +34,7 @@ const dark = oldTheme => {
   
   const defaultMode = {
     primary: {
-      main: "#3c415c"
+      main: "#666"
     },
     secondary: {
       light: "#FFC409 ",

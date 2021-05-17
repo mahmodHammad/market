@@ -1,20 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
 import CartItem from "./CartItem"
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 // import { TimeToLeaveRounded } from '@material-ui/icons';j
-
+import Button from "@material-ui/core/Button";
+import Adder from "./Adder"
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '80vw',
+    width: 380,
   },
   title:{
     color: theme.palette.txt.title,
@@ -41,11 +37,22 @@ const useStyles = makeStyles((theme) => ({
   price:{
     top: "30%",
     transform: "translateY(0)"
+  },
+  totlaCost:{
+    color:"#f00"
   }
 }));
 
 export default function Cart({cartData}) {
   const classes = useStyles();
+
+  const GetTotalCost  = ()=>{
+    let totalCost = 0
+    cartData.forEach(item=>{
+      totalCost += item.price*item.quan
+    })
+    return totalCost
+  }
 
   return (
     <List className={classes.root}>
@@ -55,6 +62,27 @@ export default function Cart({cartData}) {
       }
       </React.Fragment>
     )}
+        <Typography className={classes.totlaCost}>
+        Total Cost: {GetTotalCost()}
+      </Typography>
+
+      <Button
+      className={classes.button}
+      fontSize="large"
+      color="secondary"
+      variant="outlined"
+      // startIcon={<OpenInNewIcon />}
+      // onClick={()=>addToCart( product)}
+      // component={Link}
+      //   to={{
+      //     pathname: "/checkout",
+      //     state: {
+      //       scrollTo: "shop"
+      //     }
+      //   }}
+      >
+      Checkout
+      </Button> 
     </List>
   );
 }

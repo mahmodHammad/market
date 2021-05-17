@@ -14,3 +14,10 @@ canvas {
 .MuiDrawer-paper{
   background: #050505 !important;
 }
+.MuiListItem-secondaryAction {
+  padding-right: 15px !important;
+}
+
+.MuiButtonGroup-grouped {
+  min-width: 30px !important;
+}

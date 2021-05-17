@@ -7,10 +7,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-
+import Button from '@material-ui/core/Button';
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 // import { TimeToLeaveRounded } from '@material-ui/icons';j
-
+import Adder from "./Adder"
 const useStyles = makeStyles((theme) => ({
   root: {
     // width: '90vw',
@@ -18,16 +20,19 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor:"#0009",
   },
   title:{
-    color: theme.palette.txt.title,
-
+    color: theme.palette.txt.body,
+    fontSize: "0.9rem",
   },
   inline: {
-    display: 'inline',
+    fontSize: "0.77rem",
+    display: 'flex',
     color: theme.palette.txt.body,
+    paddingBottom:0,
+    paddingTop:8,
   },
   avLarge:{
-    width: theme.spacing(8),
-    height: theme.spacing(8),
+    width: theme.spacing(12),
+    height: theme.spacing(16),
     marginRight:15,
     borderRadius: 5
   },
@@ -41,10 +46,27 @@ const useStyles = makeStyles((theme) => ({
     //   color:"#fff"
   },
   price:{
-    top: "28%",
-    transform: "translateY(0)"
   },
   priceLable:{
+    color: theme.palette.txt.body,
+    // fontSize:10,
+    display:"inline",
+    paddingTop:4,
+    fontSize:"0.7rem"
+  },
+  sec:{
+  },
+  secTitle:{
+    flexGrow: 1
+  },
+  DeleteBtn:{
+    // fontSize: "0.5rem",
+    fontSize:"0.65rem",
+    marginLeft:-4,
+
+    position:"relative"
+  },DeleteBtnContainer:{
+    flexGrow:1,
 
   }
 }));
@@ -62,21 +84,47 @@ export default function CartItem({img,title,quantity,price}) {
         primary={title}
         className={classes.title}
         secondary={
+            <div className={classes.sec}>
             <Typography
                 component="span"
                 variant="body2"
                 className={classes.inline}
                 color="textPrimary"
             >
-                Quantity: {quantity}
+               <span className={classes.secTitle} >Quantity:</span> <Adder counter={quantity}/>
+
             </Typography>
+            <Typography
+                component="span"
+                variant="body2"
+                className={classes.inline}
+                color="textPrimary"
+            >
+                <span className={classes.secTitle} >Size:</span>  <Adder counter="L"/>
+
+            </Typography>
+           <div  className={classes.inline} >
+               <div className={classes.DeleteBtnContainer}>
+
+            
+                <Button
+                className={classes.DeleteBtn}
+                size="small"
+                color="primary"
+                startIcon={<DeleteForeverIcon size="small" fontSize="small" />}
+     
+                >
+                Remove item
+                </Button>    </div>
+                <Typography variant="body2" aria-label="comments"className={classes.priceLable} >
+                    ${price}.00 USD
+                </Typography>
+            </div>
+
+            </div>
         }
         />
-        <ListItemSecondaryAction className={classes.price}>
-            <Typography variant="body2" aria-label="comments"className={classes.inline} >
-            ${price} USD
-            </Typography>
-            </ListItemSecondaryAction>
+  
     </ListItem>
   );
 }
