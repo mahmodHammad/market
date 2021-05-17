@@ -64,38 +64,43 @@ export default function Projec({ Cart,theme }) {
   const classes = useStyles();
   const [draweOpen, SetdraweOpen] = useState(true);
   const [cartData, SetcartData] = useState([
-    {id:"12345",title:"EM TEE",quan:1,size:"XL", price:20,avatar:Avatar},
-    {id:"12346",title:"EM TEE",quan:1,size:"XL", price:20,avatar:Avatar},
-    {id:"1234",title:"EM TEE",quan:1,size:"XL", price:20,avatar:Avatar},
+    {id:"12345",title:"EM TEE",quan:1,size:"XL", price:20,avatar:Avatar}
   ]);
  
-  const toggleDrawer = ( open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
+  const toggleDrawer = ( open) => {
+    console.log("TOGGLE",open)
+    // if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    //   return;
+    // }
     SetdraweOpen( open );
   };
 
   const addToCart = item=>{
     const {id} = item
     const indd = cartData.findIndex(cd=>id===cd.id)
-    console.log("ITEM:",item)
     if(indd !==-1){
       // EXISTED
      cartData[indd].quan +=1
-
       SetcartData(cartData)
 
     }else{
-      console.log("Already existed...")
       item.quan=1
-// WILL BE REMOVED
-
       SetcartData([...cartData,item])
-
     }
-console.log("EX INDECX IS ",indd)
     SetdraweOpen( true );
+  }
+
+  const increaseQuantitly = (itemID,sign=1)=>{
+    console.log("ADD ITEM",itemID)
+    const indd = cartData.findIndex(cd=>itemID===cd.id)
+    if(indd !==-1){
+      // EXISTED
+      
+     cartData[indd].quan += sign
+     console.log("ADDING WOW",cartData)
+     const old = [...cartData]
+      SetcartData(old)
+    }
   }
 
   useEffect(() => {
@@ -113,7 +118,7 @@ console.log("EX INDECX IS ",indd)
                 draweOpen={draweOpen}
                 toggleDrawer={toggleDrawer}
               />
-            <Drawer toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
+            <Drawer increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
 
               <Switch>
                 <Route exact path="/shop" render={props => <Shop addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>

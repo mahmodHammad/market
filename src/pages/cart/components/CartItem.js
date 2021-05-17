@@ -71,9 +71,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function CartItem({img,title,quantity,price}) {
+export default function CartItem({productID,increaseQuantitly,img,title,quantity,price}) {
   const classes = useStyles();
-
+console.log("QUANTITLY IS",quantity)
   return (
     <ListItem alignItems="center" className={classes.listItemStyle}>
         <ListItemAvatar>
@@ -91,7 +91,7 @@ export default function CartItem({img,title,quantity,price}) {
                 className={classes.inline}
                 color="textPrimary"
             >
-               <span className={classes.secTitle} >Quantity:</span> <Adder counter={quantity}/>
+               <span className={classes.secTitle} >Quantity:</span> <Adder productID={productID} increaseQuantitly={increaseQuantitly} counter={quantity}/>
 
             </Typography>
             <Typography
@@ -104,18 +104,16 @@ export default function CartItem({img,title,quantity,price}) {
 
             </Typography>
            <div  className={classes.inline} >
-               <div className={classes.DeleteBtnContainer}>
-
-            
-                <Button
-                className={classes.DeleteBtn}
-                size="small"
-                color="primary"
-                startIcon={<DeleteForeverIcon size="small" fontSize="small" />}
-     
-                >
-                Remove item
-                </Button>    </div>
+                <div className={classes.DeleteBtnContainer}>
+                  <Button
+                  className={classes.DeleteBtn}
+                  size="small"
+                  color="primary"
+                  startIcon={<DeleteForeverIcon size="small" fontSize="small" />}
+                  >
+                  Remove item
+                  </Button>    
+                </div>
                 <Typography variant="body2" aria-label="comments"className={classes.priceLable} >
                     ${price}.00 USD
                 </Typography>

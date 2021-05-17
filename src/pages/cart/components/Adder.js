@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function BasicButtonGroup({counter}) {
+export default function BasicButtonGroup({counter,increaseQuantitly,productID}) {
   const classes = useStyles();
 
   return (
@@ -28,7 +28,7 @@ export default function BasicButtonGroup({counter}) {
       <ButtonGroup variant="contained" size="small" color="primary" aria-label="contained primary button group">
         <Button className={classes.btn} size="small" >-</Button>
         <span className={classes.txt}>{counter}</span>
-        <Button className={classes.btn} >+</Button>
+        <Button className={classes.btn} onClick={()=>increaseQuantitly(productID)} >+</Button>
       </ButtonGroup>
       
     </div>

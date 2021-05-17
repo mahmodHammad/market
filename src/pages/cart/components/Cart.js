@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+import { Link } from "react-router-dom";
 
 import CartItem from "./CartItem"
 // import { TimeToLeaveRounded } from '@material-ui/icons';j
@@ -43,9 +44,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Cart({cartData}) {
+export default function Cart({increaseQuantitly,cartData,toggleDrawer}) {
   const classes = useStyles();
-
   const GetTotalCost  = ()=>{
     let totalCost = 0
     cartData.forEach(item=>{
@@ -57,7 +57,7 @@ export default function Cart({cartData}) {
   return (
     <List className={classes.root}>
       {cartData.map((d,index)=><React.Fragment> 
-          <CartItem img={d.avatar} title={d.title} quantity={d.quan} price={d.price} />
+          <CartItem increaseQuantitly={increaseQuantitly} productID={d.id} img={d.avatar} title={d.title} quantity={d.quan} price={d.price} />
           {index !==cartData.length-1?<Divider  component="li" className={classes.dividerStyle}/>:null
       }
       </React.Fragment>
@@ -72,17 +72,27 @@ export default function Cart({cartData}) {
       color="secondary"
       variant="outlined"
       // startIcon={<OpenInNewIcon />}
-      // onClick={()=>addToCart( product)}
-      // component={Link}
-      //   to={{
-      //     pathname: "/checkout",
-      //     state: {
-      //       scrollTo: "shop"
-      //     }
-      //   }}
+      onClick={()=>{
+        console.log("CLICKKKCKCKED")
+        toggleDrawer( false)}
+      }
       >
       Checkout
       </Button> 
+      <Button
+      className={classes.button}
+      fontSize="large"
+      color="secondary"
+      variant="outlined"
+      // startIcon={<OpenInNewIcon />}
+      onClick={()=>{
+        console.log("CLICKKKCKCKED")
+        toggleDrawer( false)}
+      }
+      >
+      Close
+      </Button> 
+
     </List>
   );
 }

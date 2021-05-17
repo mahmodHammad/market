@@ -49,7 +49,6 @@ export default function Navbar({ props }) {
   const classes = useStyles();
   return (
     <div>
-      <HideOnScroll {...props}>
         <AppBar color="transparent" className={classes.nav}>
           <Toolbar>
             <div className={classes.logoContainer}>
@@ -85,7 +84,6 @@ export default function Navbar({ props }) {
             </Hidden>
           </Toolbar>
         </AppBar>
-      </HideOnScroll>
     </div>
   );
 }

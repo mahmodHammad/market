@@ -7,7 +7,6 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "./components/Gridlist"
-import { Link } from "react-router-dom";
 
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import Drawer from "../../Navbar/components/Drawer"
@@ -64,8 +63,6 @@ const useStyles = makeStyles(theme => ({
     TechHeader:{fontSize:"1.2rem"}
   }
 }));
-
-
 
 export default function Projec({ addToCart,products,toggleDrawer }) {
   const classes = useStyles();
