@@ -26,7 +26,7 @@ export default function BasicButtonGroup({counter,increaseQuantitly,productID}) 
   return (
     <div className={classes.root}>
       <ButtonGroup variant="contained" size="small" color="primary" aria-label="contained primary button group">
-        <Button className={classes.btn} size="small" >-</Button>
+        <Button disabled={counter<2} className={classes.btn} onClick={()=>increaseQuantitly(productID,-1)} size="small" >-</Button>
         <span className={classes.txt}>{counter}</span>
         <Button className={classes.btn} onClick={()=>increaseQuantitly(productID)} >+</Button>
       </ButtonGroup>

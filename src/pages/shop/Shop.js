@@ -24,24 +24,28 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 5
   },
   info:{
-    color: theme.palette.txt.body,
+    // color: theme.palette.txt.body,
     marginTop:20
   },
   header: {
     // fontSize: "2.4rem",
     // fontWeight: "bold",
     // textAlign: "center",
-    color: theme.palette.txt.title
+    // color: theme.palette.txt.title
   },
   TechHeader: { fontSize: "1.4rem", letterSpacing: 1, marginTop: 7 },
   body: {
     fontSize: "1.2rem",
-    color: theme.palette.txt.body,
+    // color: theme.palette.txt.body,
     textAlign: "left"
   },
-  techUsedHeader: { color: theme.palette.txt.title, fontSize: "1.6rem" },
+  techUsedHeader: { 
+    // color: theme.palette.txt.title, 
+    fontSize: "1.6rem" },
   techUsed: { textAlign: "left", marginTop: 30, marginBottom: 50 },
-  tech: { color: theme.palette.txt.body, fontSize: "1rem" },
+  tech: { 
+    // color: theme.palette.txt.body, 
+    fontSize: "1rem" },
   logoIcon: {
     width: 40,
     height: 40,

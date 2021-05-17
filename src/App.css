@@ -12,7 +12,7 @@ canvas {
   width: 30vw !important;
 }
 .MuiDrawer-paper{
-  background: #050505 !important;
+  /* background: #050505 !important; */
 }
 .MuiListItem-secondaryAction {
   padding-right: 15px !important;
@@ -20,4 +20,11 @@ canvas {
 
 .MuiButtonGroup-grouped {
   min-width: 30px !important;
+}
+
+.MuiInputBase-input{
+  font-size: 0.78rem !important;
+}
+.MuiSelect-select.MuiSelect-select {
+  padding-right: 38px !important;
 }

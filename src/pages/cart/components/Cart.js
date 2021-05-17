@@ -14,12 +14,12 @@ const useStyles = makeStyles((theme) => ({
     width: 380,
   },
   title:{
-    color: theme.palette.txt.title,
+    // color: theme.palette.txt.title,
 
   },
   inline: {
     display: 'inline',
-    color: theme.palette.txt.body,
+    // color: theme.palette.txt.body,
   },
   avLarge:{
     width: theme.spacing(8),
@@ -73,7 +73,6 @@ export default function Cart({increaseQuantitly,cartData,toggleDrawer}) {
       variant="outlined"
       // startIcon={<OpenInNewIcon />}
       onClick={()=>{
-        console.log("CLICKKKCKCKED")
         toggleDrawer( false)}
       }
       >
@@ -86,7 +85,6 @@ export default function Cart({increaseQuantitly,cartData,toggleDrawer}) {
       variant="outlined"
       // startIcon={<OpenInNewIcon />}
       onClick={()=>{
-        console.log("CLICKKKCKCKED")
         toggleDrawer( false)}
       }
       >

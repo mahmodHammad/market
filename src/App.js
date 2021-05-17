@@ -23,8 +23,11 @@ export default class App extends Component {
   };
   // init
   theme = createMuiTheme({
-    palette: defaultMode
+    palette: {
+      type:'dark'
+    }
   });
+  // defaultMode
 
   applyMode = () => {
 

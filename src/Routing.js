@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     // padding: 10,
     paddingTop: 90,
-    color: theme.palette.txt.body,
+    // color: theme.palette.txt.body,
   },
   button:{
       margin:20,

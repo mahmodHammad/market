@@ -33,6 +33,9 @@ const dark = oldTheme => {
   };
   
   const defaultMode = {
+    palette:{
+      type:"dark"
+    },
     primary: {
       main: "#666"
     },

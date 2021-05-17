@@ -12,6 +12,8 @@ import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 // import { TimeToLeaveRounded } from '@material-ui/icons';j
+import Selector from "./Selector"
+
 import Adder from "./Adder"
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor:"#0009",
   },
   title:{
-    color: theme.palette.txt.body,
+    // color: theme.palette.txt.body,
     fontSize: "0.9rem",
   },
   inline: {
     fontSize: "0.77rem",
     display: 'flex',
-    color: theme.palette.txt.body,
+    // color: theme.palette.txt.body,
     paddingBottom:0,
     paddingTop:8,
   },
@@ -48,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   price:{
   },
   priceLable:{
-    color: theme.palette.txt.body,
+    // color: theme.palette.txt.body,
     // fontSize:10,
     display:"inline",
     paddingTop:4,
@@ -73,7 +75,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CartItem({productID,increaseQuantitly,img,title,quantity,price}) {
   const classes = useStyles();
-console.log("QUANTITLY IS",quantity)
   return (
     <ListItem alignItems="center" className={classes.listItemStyle}>
         <ListItemAvatar>
@@ -100,7 +101,7 @@ console.log("QUANTITLY IS",quantity)
                 className={classes.inline}
                 color="textPrimary"
             >
-                <span className={classes.secTitle} >Size:</span>  <Adder counter="L"/>
+                <span className={classes.secTitle} >Size:</span> <Selector/>
 
             </Typography>
            <div  className={classes.inline} >
@@ -117,6 +118,7 @@ console.log("QUANTITLY IS",quantity)
                 <Typography variant="body2" aria-label="comments"className={classes.priceLable} >
                     ${price}.00 USD
                 </Typography>
+                
             </div>
 
             </div>
