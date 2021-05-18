@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-// import "./App.css";
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-// import axios from
-const stripePromise = loadStripe("Bearer pk_test_51IoFwwAWo4uBcmc7Xy1DSsvv27WmtFWwbJyETudzGnUS2WmEBaD8BmVaD6eab5cWkRlg4EzNow49Lmta2V9NLmFX00hrGCam7m");
+const stripePromise = loadStripe("pk_test_51IoFwwAWo4uBcmc7Xy1DSsvv27WmtFWwbJyETudzGnUS2WmEBaD8BmVaD6eab5cWkRlg4EzNow49Lmta2V9NLmFX00hrGCam7m");
 
 const ProductDisplay = ({ handleClick }) => (
   <section>
@@ -50,13 +48,9 @@ export default function App() {
 
   const handleClick = async (event) => {
     const stripe = await stripePromise;
-    console.log("SSS",stripe)
+
     const response = await fetch("https://nameless-falls-85436.herokuapp.com/create-checkout-session", {
       method: "POST",
-      headers:{
-        "Authorization": "Bearer sk_test_4eC39HqLyjWDarjtT1zdp7dc"
-      }
-     
     });
 
     const session = await response.json();
@@ -70,6 +64,7 @@ export default function App() {
       // If `redirectToCheckout` fails due to a browser or network
       // error, display the localized error message to your customer
       // using `result.error.message`.
+      console.log("FUCKEN ERROR",result.error.message)
     }
   };
 

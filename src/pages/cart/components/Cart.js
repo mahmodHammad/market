@@ -60,14 +60,17 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
 
   const callapi=()=>{
     console.log("cartData",cartData)
-  const fdata = {  Price: 17,
+  const fdata = { 
+    
+    Title:"Allah akbar",
+    Price: 17,
     Description:"Hello my product",
     AvatarImg: "https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
     Quantity: 1,
     Size: "L",
     Images: ["https://cdn.wallpapersafari.com/38/45/KftFVL.jpg"]}
 
-    axios.post("https://nameless-falls-85436.herokuapp.com/products",fdata).then(r=>{
+    axios.get("https://nameless-falls-85436.herokuapp.com/products",fdata).then(r=>{
   console.log("WOOOOW",r) 
 }).catch(e=>console.log("a7aaaa",e))}
   
