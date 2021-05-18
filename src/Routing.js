@@ -22,9 +22,39 @@ const products = [
     id:"prod1",
     title:"hello",
     size:"L",
-    price:20,
+    price:1599,
     avatar:Avatar,
     description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
+    images:[
+      {
+        img: l1,
+        alt: 'Image',
+        cols: 2,
+      },
+      {
+          img: p2,
+          alt: 'Image',
+          cols: 1,
+        },
+      {
+          img: l2,
+          alt: 'Image',
+          cols: 2,
+        },
+        {
+          img: p1,
+          alt: 'Image',
+          cols: 1,
+        },
+    ]
+  },
+  {
+    id:"Mahmoud",
+    title:"Mahmoud",
+    size:"L",
+    price:1899,
+    avatar:Avatar,
+    description:"  I need to sleep :( ",
     images:[
       {
         img: l1,
@@ -66,7 +96,6 @@ export default function Projec({ Cart,theme }) {
   const classes = useStyles();
   const [draweOpen, SetdraweOpen] = useState(true);
   const [cartData, SetcartData] = useState([
-    {id:"12345",title:"EM TEE",quan:1,size:"XL", price:20,avatar:Avatar}
   ]);
 
   const removeItem = (id)=>{
@@ -141,7 +170,7 @@ const setsize=(itemID,newsize)=>{
 
               <Switch>
                 <Route exact path="/" render={props => <Cat/>} />
-                <Route exact path="/sucess" render={props => <Sucess/>} />
+                <Route exact path="/success" render={props => <Sucess/>} />
                 <Route exact path="/shop" render={props => <Shop addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>
                 <Route exact path="/checkout" render={props => <Checkout cartData={cartData}/>} />
               </Switch>
