@@ -67,9 +67,11 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
         name,
         amount: c.price,
         images:c.avatar, 
+        quantity:c.quan
       }
       return data
     })
+    console.log("خد ياعم",formatted)
      return formatted
   }
 

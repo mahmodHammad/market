@@ -20,6 +20,7 @@ const products = [
   {
     id:"prod1",
     title:"hello",
+    size:"L",
     price:20,
     avatar:Avatar,
     description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
