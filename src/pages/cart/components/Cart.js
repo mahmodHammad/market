@@ -66,7 +66,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
       const data = {
         name,
         amount: c.price,
-        images:c.avatar, 
+        images:[c.avatar], 
         quantity:c.quan
       }
       return data
