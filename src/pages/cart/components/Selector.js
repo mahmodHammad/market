@@ -7,7 +7,7 @@ import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
 const sizes = [
-    "S","M","L","XL","XXL"
+    "S","M","L","XL"
 ]
 
 const useStyles = makeStyles((theme) => ({
@@ -21,38 +21,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NativeSelects() {
+export default function NativeSelects({id,size,setsize}) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    age: '',
-    name: 'hai',
-  });
 
   const handleChange = (event) => {
+      console.log("VALUEE",event.target.value)
     const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
+    setsize(id,event.target.value);
   };
 
   return (
     <div>
         <Select
           native
-          value={state.age}
+          value={size}
           onChange={handleChange}
-          label="Age"
           inputProps={{
             name: 'age',
             id: 'outlined-age-native-simple',
           }}
         >
-          {/* <option aria-label="None" value="" /> */}
           {sizes.map(s=><option value={s}>{s}</option>)}
-        
         </Select>
-      
     </div>
   );
 }

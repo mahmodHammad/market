@@ -66,6 +66,23 @@ export default function Projec({ Cart,theme }) {
   const [cartData, SetcartData] = useState([
     {id:"12345",title:"EM TEE",quan:1,size:"XL", price:20,avatar:Avatar}
   ]);
+
+  const removeItem = (id)=>{
+    const newCart = cartData.filter(c=>c.id!==id)
+    SetcartData(newCart)
+  }
+
+const setsize=(itemID,newsize)=>{
+  const indd = cartData.findIndex(cd=>itemID===cd.id)
+  if(indd !==-1){
+    // EXISTED
+    
+   cartData[indd].size = newsize
+   console.log("ADDING WOW",cartData)
+   const old = [...cartData]
+    SetcartData(old)
+  }
+}
  
   const toggleDrawer = ( open) => {
     console.log("TOGGLE",open)
@@ -118,7 +135,7 @@ export default function Projec({ Cart,theme }) {
                 draweOpen={draweOpen}
                 toggleDrawer={toggleDrawer}
               />
-            <Drawer increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
+            <Drawer removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
 
               <Switch>
                 <Route exact path="/shop" render={props => <Shop addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>

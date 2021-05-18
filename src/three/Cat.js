@@ -1,14 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import { sceneSetup, scene } from "./setup";
-import { startAnimationLoop } from "./Animate";
+import { sceneSetup, scene ,controls} from "./setup";
+import { startAnimationLoop ,requestID} from "./Animate";
 
 export default function Cat( ) {
   const textInput = useRef(null);
-
   useEffect(() => {
-    const canvasTarget = textInput.current;
-    sceneSetup(canvasTarget);
-    startAnimationLoop();
+
+      scene.clear()
+      const canvasTarget = textInput.current;
+      sceneSetup(canvasTarget);
+      startAnimationLoop();
+    
+    return () => {
+      // Anything in here is fired on component unmount.
+      window.cancelAnimationFrame(requestID);
+          controls.dispose();
+  }
   }, []);
 
   return (

@@ -73,8 +73,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function CartItem({productID,increaseQuantitly,img,title,quantity,price}) {
+
+export default function CartItem({removeItem,size, setsize, productID,increaseQuantitly,img,title,quantity,price}) {
   const classes = useStyles();
+ 
   return (
     <ListItem alignItems="center" className={classes.listItemStyle}>
         <ListItemAvatar>
@@ -101,8 +103,7 @@ export default function CartItem({productID,increaseQuantitly,img,title,quantity
                 className={classes.inline}
                 color="textPrimary"
             >
-                <span className={classes.secTitle} >Size:</span> <Selector/>
-
+                <span className={classes.secTitle} >Size:</span> <Selector id={productID} size={size} setsize={setsize} />
             </Typography>
            <div  className={classes.inline} >
                 <div className={classes.DeleteBtnContainer}>
@@ -110,6 +111,7 @@ export default function CartItem({productID,increaseQuantitly,img,title,quantity
                   className={classes.DeleteBtn}
                   size="small"
                   color="primary"
+                  onClick={()=>removeItem(productID)}
                   startIcon={<DeleteForeverIcon size="small" fontSize="small" />}
                   >
                   Remove item

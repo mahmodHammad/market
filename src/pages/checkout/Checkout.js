@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import Strip from "../cart/components/Strip"
 
 // function Copyright() {
 //   return (
@@ -95,7 +96,8 @@ export default function Checkout() {
   return (
     <React.Fragment>
       <CssBaseline />
-      
+      <Strip/>
+{/*       
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
@@ -141,7 +143,7 @@ export default function Checkout() {
             )}
           </React.Fragment>
         </Paper>
-      </main>
+      </main> */}
     </React.Fragment>
   );
 }

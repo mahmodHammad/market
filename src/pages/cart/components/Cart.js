@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
-
+import axios from "axios"
 import CartItem from "./CartItem"
 // import { TimeToLeaveRounded } from '@material-ui/icons';j
 import Button from "@material-ui/core/Button";
@@ -41,10 +41,14 @@ const useStyles = makeStyles((theme) => ({
   },
   totlaCost:{
     color:"#f00"
-  }
+  },
+lay:{
+  padding:10
+}
+
 }));
 
-export default function Cart({increaseQuantitly,cartData,toggleDrawer}) {
+export default function Cart({removeItem,setsize,increaseQuantitly,cartData,toggleDrawer}) {
   const classes = useStyles();
   const GetTotalCost  = ()=>{
     let totalCost = 0
@@ -54,14 +58,30 @@ export default function Cart({increaseQuantitly,cartData,toggleDrawer}) {
     return totalCost
   }
 
+  const callapi=()=>{
+    console.log("cartData",cartData)
+  const fdata = {  Price: 17,
+    Description:"Hello my product",
+    AvatarImg: "https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
+    Quantity: 1,
+    Size: "L",
+    Images: ["https://cdn.wallpapersafari.com/38/45/KftFVL.jpg"]}
+
+    axios.post("https://nameless-falls-85436.herokuapp.com/products",fdata).then(r=>{
+  console.log("WOOOOW",r) 
+}).catch(e=>console.log("a7aaaa",e))}
+  
+// console.table([{title:"heloo",age:12},{title:"ffheloo",age:122},{title:"hffeloo",age:12},])
   return (
     <List className={classes.root}>
       {cartData.map((d,index)=><React.Fragment> 
-          <CartItem increaseQuantitly={increaseQuantitly} productID={d.id} img={d.avatar} title={d.title} quantity={d.quan} price={d.price} />
+          <CartItem removeItem={removeItem} size={d.size} setsize={setsize} increaseQuantitly={increaseQuantitly} productID={d.id} img={d.avatar} title={d.title} quantity={d.quan} price={d.price} />
           {index !==cartData.length-1?<Divider  component="li" className={classes.dividerStyle}/>:null
       }
       </React.Fragment>
     )}
+    <div className={classes.lay}>
+
         <Typography className={classes.totlaCost}>
         Total Cost: {GetTotalCost()}
       </Typography>
@@ -73,7 +93,9 @@ export default function Cart({increaseQuantitly,cartData,toggleDrawer}) {
       variant="outlined"
       // startIcon={<OpenInNewIcon />}
       onClick={()=>{
-        toggleDrawer( false)}
+        toggleDrawer( false)
+        callapi()
+      }
       }
       >
       Checkout
@@ -90,6 +112,7 @@ export default function Cart({increaseQuantitly,cartData,toggleDrawer}) {
       >
       Close
       </Button> 
+      </div>
 
     </List>
   );
