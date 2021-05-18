@@ -66,7 +66,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
       const data = {
         name,
         amount: c.price,
-        images:[c.avatar], 
+        images:[`https://earth-mz1hv9zj3-mahmodhammad.vercel.app/${c.avatar}`], 
         quantity:c.quan
       }
       return data
