@@ -9,6 +9,8 @@ import CartItem from "./CartItem"
 // import { TimeToLeaveRounded } from '@material-ui/icons';j
 import Button from "@material-ui/core/Button";
 import Adder from "./Adder"
+import handleCheckout from "./Strip"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 380,
@@ -57,6 +59,19 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
     })
     return totalCost
   }
+  
+  const formatforcheckout = ()=>{
+  const formatted =   cartData.map(c=>{
+      const name = `${c.title} ${c.size}`  
+      const data = {
+        name,
+        amount: c.price,
+        images:c.avatar, 
+      }
+      return data
+    })
+     return formatted
+  }
 
   const callapi=()=>{
     console.log("cartData",cartData)
@@ -97,7 +112,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
       // startIcon={<OpenInNewIcon />}
       onClick={()=>{
         toggleDrawer( false)
-        callapi()
+        handleCheckout(formatforcheckout())
       }
       }
       >
