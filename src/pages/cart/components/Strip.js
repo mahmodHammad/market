@@ -21,12 +21,15 @@ const stripePromise = loadStripe("pk_test_51IoFwwAWo4uBcmc7Xy1DSsvv27WmtFWwbJyET
 //     }
 //   }, []);
 
-  const handleClick = async (event) => {
+  const handleClick = async (body) => {
     const stripe = await stripePromise;
-
+    console.log("BOOOOOOOOOOOOODY",body)
     const response = await fetch("https://nameless-falls-85436.herokuapp.com/create-checkout-session", {
       method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body),
     });
+    console.log("RESPONSE",response)
 
     const session = await response.json();
 

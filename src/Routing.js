@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Drawer from "./Navbar/components/Drawer"
 import Button from '@material-ui/core/Button';
 import "./App.css";
+import Sucess from "./pages/feedback/Sucess"
 
 
 import p1 from "./assets/p1.jpeg"
@@ -139,8 +140,9 @@ const setsize=(itemID,newsize)=>{
             <Drawer removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
 
               <Switch>
-                <Route exact path="/shop" render={props => <Shop addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>
                 <Route exact path="/" render={props => <Cat/>} />
+                <Route exact path="/sucess" render={props => <Sucess/>} />
+                <Route exact path="/shop" render={props => <Shop addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>
                 <Route exact path="/checkout" render={props => <Checkout cartData={cartData}/>} />
               </Switch>
               {/* <Footer /> */}
