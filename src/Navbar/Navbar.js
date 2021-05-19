@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
   study: {
     padding: "2px 10px",
     margin: 2,
-    marginLeft: 5
   },
   themeicon: { marginLeft: 4 },
   "@media (max-width: 600px)": {
@@ -67,7 +66,7 @@ export default function Navbar({ props }) {
                 size="large"
                 className={classes.study}
                 variant="outlined"
-                color="secondary"
+                color="primary"
                 component={Link}
                 to={{
                   pathname: "/shop",

@@ -43,7 +43,7 @@ export default function CustomizedMenus() {
         color="secondary"
         onClick={handleClick}
       >
-        <MenuIcon color="secondary" />
+        <MenuIcon color="primary" />
       </IconButton>
 
       <ClickAwayListener touchEvent="onTouchStart" onClickAway={handleClose}>

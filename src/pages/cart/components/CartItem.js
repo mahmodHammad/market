@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     // width: '90vw',
     // maxWidth: '36ch',
     // backgroundColor:"#0009",
+    // marginBottom:40
   },
   title:{
     // color: theme.palette.txt.body,

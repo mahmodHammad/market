@@ -30,7 +30,7 @@ export default function ImageGridList({tileData}) {
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={200} className={classes.gridList} cols={3}>
+      <GridList spacing={10} cellHeight={200} className={classes.gridList} cols={3}>
         {tileData.map((tile) => (
           <GridListTile key={tile.img} cols={tile.cols || 1}>
             <img src={tile.img} alt={tile.title}/>

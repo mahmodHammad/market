@@ -26,15 +26,16 @@ const products = [
     avatar:Avatar,
     description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
     images:[
-      {
-        img: l1,
-        alt: 'Image',
-        cols: 2,
-      },
+  
       {
           img: p2,
           alt: 'Image',
           cols: 1,
+        },
+        {
+          img: l1,
+          alt: 'Image',
+          cols: 2,
         },
       {
           img: l2,
@@ -94,7 +95,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Projec({ Cart,theme }) {
   const classes = useStyles();
-  const [draweOpen, SetdraweOpen] = useState(true);
+  const [draweOpen, SetdraweOpen] = useState(false);
   const [cartData, SetcartData] = useState([
   ]);
 
