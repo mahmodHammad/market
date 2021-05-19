@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
     // padding: 10,
     background:"#080808",
     paddingTop: 100,
+    minHeight:"100vh"
     // textAlign: "center"
   },
   img: {
@@ -48,9 +49,9 @@ const useStyles = makeStyles(theme => ({
   cartbtn: {
     textDecoration: "none",
     // color: "#fff",
-    padding: "4px 11px",
+    // padding: "2px 11px",
     borderRadius: 4,
-    margin: "22px 5px",
+    margin: "22px 3px",
     textShadow:"1px 1px 2px #0002",
 
     "&:hover": {
@@ -59,11 +60,12 @@ const useStyles = makeStyles(theme => ({
     // float:"right"
   },
   addToshop:{
+    fontSize:19
   },
   btnParent:{
     border: "1px solid rgba(224, 224, 224, 0.5)",
     // borderColor:"inherit",
-    padding: "5px 11px",
+    padding: "7px 12px",
   }
 }));
 
@@ -84,7 +86,7 @@ export default function Projec({ addToCart,products,toggleDrawer }) {
 
           <div className={classes.productAction}>
             <Typography className={classes.price} variant="body2" >
-                  $16.00
+                  $39.99
             </Typography>
 
             <IconButton
@@ -103,7 +105,7 @@ export default function Projec({ addToCart,products,toggleDrawer }) {
               fontSize="small"
               size="small"
               color="primary"
-              variant="contained"
+              variant="outlined"
               startIcon={<AddShoppingCartIcon />}
               onClick={()=>addToCart( product)}
             >

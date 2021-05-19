@@ -26,59 +26,59 @@ const products = [
     avatar:Avatar,
     description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
     images:[
-  
       {
-          img: p2,
-          alt: 'Image',
-          cols: 1,
-        },
-        {
-          img: l1,
-          alt: 'Image',
-          cols: 2,
-        },
-      {
-          img: l2,
-          alt: 'Image',
-          cols: 2,
-        },
-        {
-          img: p1,
-          alt: 'Image',
-          cols: 1,
-        },
-    ]
-  },
-  {
-    id:"Mahmoud",
-    title:"Mahmoud",
-    size:"L",
-    price:1899,
-    avatar:Avatar,
-    description:"  I need to sleep :( ",
-    images:[
-      {
-        img: l1,
+        img: p1,
         alt: 'Image',
         cols: 2,
       },
       {
           img: p2,
           alt: 'Image',
+          cols: 2,
+        },
+        {
+          img: l1,
+          alt: 'Image',
           cols: 1,
         },
       {
           img: l2,
           alt: 'Image',
-          cols: 2,
-        },
-        {
-          img: p1,
-          alt: 'Image',
           cols: 1,
         },
+      
     ]
-  }
+  },
+  // {
+  //   id:"Mahmoud",
+  //   title:"Mahmoud",
+  //   size:"L",
+  //   price:1899,
+  //   avatar:Avatar,
+  //   description:"  I need to sleep :( ",
+  //   images:[
+  //     {
+  //       img: l1,
+  //       alt: 'Image',
+  //       cols: 2,
+  //     },
+  //     {
+  //         img: p2,
+  //         alt: 'Image',
+  //         cols: 1,
+  //       },
+  //     {
+  //         img: l2,
+  //         alt: 'Image',
+  //         cols: 2,
+  //       },
+  //       {
+  //         img: p1,
+  //         alt: 'Image',
+  //         cols: 1,
+  //       },
+  //   ]
+  // }
   ]
 const useStyles = makeStyles(theme => ({
   root: {
