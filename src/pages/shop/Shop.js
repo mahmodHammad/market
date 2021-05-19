@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   product:{
-    marginBottom:40
+    marginBottom:6
   },
   productAction:{
     display:"flex",
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     // color: "#fff",
     // padding: "2px 11px",
     borderRadius: 4,
-    margin: "22px 3px",
+    margin: "16px 3px",
     textShadow:"1px 1px 2px #0002",
 
     "&:hover": {

@@ -20,9 +20,9 @@ import Avatar from "./assets/avatar.jpeg"
 const products = [
   {
     id:"prod1",
-    title:"hello",
+    title:"EM tee",
     size:"L",
-    price:1599,
+    price:40,
     avatar:Avatar,
     description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
     images:[
@@ -97,6 +97,7 @@ export default function Projec({ Cart,theme }) {
   const classes = useStyles();
   const [draweOpen, SetdraweOpen] = useState(false);
   const [cartData, SetcartData] = useState([
+    {id: "prod3", title: "NO tee", size: "L", price: 40,avatar:p1,quan:2}
   ]);
 
   const removeItem = (id)=>{

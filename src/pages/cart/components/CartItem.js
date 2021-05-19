@@ -17,6 +17,7 @@ import Selector from "./Selector"
 import Adder from "./Adder"
 const useStyles = makeStyles((theme) => ({
   root: {
+    padding:10
     // width: '90vw',
     // maxWidth: '36ch',
     // backgroundColor:"#0009",
@@ -24,25 +25,24 @@ const useStyles = makeStyles((theme) => ({
   },
   title:{
     // color: theme.palette.txt.body,
-    fontSize: "0.9rem",
+    fontSize: "2rem",
   },
   inline: {
-    fontSize: "0.77rem",
+    fontSize: "0.88rem",
     display: 'flex',
-    // color: theme.palette.txt.body,
+    color: theme.palette.body2,
     paddingBottom:0,
-    paddingTop:8,
+    paddingTop:12,
   },
   avLarge:{
-    width: theme.spacing(12),
-    height: theme.spacing(16),
+    width: theme.spacing(10),
+    height: theme.spacing(14),
     marginRight:15,
     borderRadius: 5
   },
   listItemStyle:{
       paddingTop:20,
       paddingBottom:20,
-    // background:"#f00"
   },
   dividerStyle:{
       background:"#fff3",
@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
     display:"inline",
     paddingTop:4,
     fontSize:"0.7rem"
+  },
+  quantity:{
+    margin:"5px 0"
   },
   sec:{
   },
@@ -89,29 +92,23 @@ export default function CartItem({removeItem,size, setsize, productID,increaseQu
         className={classes.title}
         secondary={
             <div className={classes.sec}>
+               <Selector id={productID} size={size} setsize={setsize} />
             <Typography
                 component="span"
                 variant="body2"
-                className={classes.inline}
+                className={`${classes.inline} ${classes.quantity}`}
                 color="textPrimary"
             >
                <span className={classes.secTitle} >Quantity:</span> <Adder productID={productID} increaseQuantitly={increaseQuantitly} counter={quantity}/>
 
             </Typography>
-            <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-            >
-                <span className={classes.secTitle} >Size:</span> <Selector id={productID} size={size} setsize={setsize} />
-            </Typography>
+           
            <div  className={classes.inline} >
                 <div className={classes.DeleteBtnContainer}>
                   <Button
                   className={classes.DeleteBtn}
                   size="small"
-                  color="primary"
+                  color="secondary"
                   onClick={()=>removeItem(productID)}
                   startIcon={<DeleteForeverIcon size="small" fontSize="small" />}
                   >

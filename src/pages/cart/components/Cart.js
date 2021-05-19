@@ -14,10 +14,18 @@ import handleCheckout from "./Strip"
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 380,
+    background:"#060606",
+    minHeight:"100vh",
+    padding:10,
+
   },
   title:{
     // color: theme.palette.txt.title,
 
+  },
+  button:{
+    marginRight:10,
+    marginTop:10
   },
   inline: {
     display: 'inline',
@@ -45,7 +53,9 @@ const useStyles = makeStyles((theme) => ({
     color:"#f00"
   },
 lay:{
-  padding:10
+  padding:10,
+  position:"absolute",
+  bottom:10
 }
 
 }));

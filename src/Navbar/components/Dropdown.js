@@ -10,6 +10,7 @@ import Grow from "@material-ui/core/Grow";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const useStyles = makeStyles(theme => ({
   dropdown: {
@@ -43,7 +44,7 @@ export default function CustomizedMenus() {
         color="secondary"
         onClick={handleClick}
       >
-        <MenuIcon color="primary" />
+        <ShoppingCartIcon color="primary" fontSize="small" />
       </IconButton>
 
       <ClickAwayListener touchEvent="onTouchStart" onClickAway={handleClose}>

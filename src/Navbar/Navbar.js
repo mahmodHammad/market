@@ -10,7 +10,6 @@ import Slide from "@material-ui/core/Slide";
 import IconButton from "@material-ui/core/IconButton";
 import Dropdwon from "./components/Dropdown";
 import logo from "../assets/logo.png"
-
 const useStyles = makeStyles(theme => ({
   logoContainer: {
     flexGrow: 1,

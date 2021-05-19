@@ -11,6 +11,11 @@ const sizes = [
 ]
 
 const useStyles = makeStyles((theme) => ({
+  root:{
+    position:"absolute",
+    top:22,
+    right:20
+  },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
@@ -31,7 +36,9 @@ export default function NativeSelects({id,size,setsize}) {
   };
 
   return (
-    <div>
+         <FormControl className={classes.root}>
+        {/* <InputLabel id="demo-simple-select-label">Size</InputLabel> */}
+
         <Select
           native
           value={size}
@@ -43,6 +50,7 @@ export default function NativeSelects({id,size,setsize}) {
         >
           {sizes.map(s=><option value={s}>{s}</option>)}
         </Select>
-    </div>
+      </FormControl>
+      
   );
 }
