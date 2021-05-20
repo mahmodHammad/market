@@ -45,14 +45,15 @@ const useStyles = makeStyles(theme => ({
   price:{
     fontSize:"1.1rem",
     flexGrow: 1,
-    textAlign: "center"
+    textAlign: "center",
+    marginLeft:-10
   },
   cartbtn: {
     textDecoration: "none",
     // color: "#fff",
     // padding: "2px 11px",
     borderRadius: 4,
-    margin: "16px 3px",
+    margin: "16px 2px",
     textShadow:"1px 1px 2px #0002",
 
     "&:hover": {
@@ -70,7 +71,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Projec({ addToCart,products,toggleDrawer }) {
+export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
   const classes = useStyles();
   useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
@@ -79,6 +80,7 @@ export default function Projec({ addToCart,products,toggleDrawer }) {
   return (
     <div className={classes.root}>
         <Navbar
+        cartData={cartData}
           isDarkMode={true}
           // draweOpen={draweOpen}
           // toggleDrawer={toggleDrawer}
@@ -115,7 +117,7 @@ export default function Projec({ addToCart,products,toggleDrawer }) {
               color="primary"
               variant="outlined"
               startIcon={<AddShoppingCartIcon />}
-              onClick={()=>addToCart( product)}
+              onClick={()=>addToCart( product,true)}
             >
               & checkout
             </Button> 

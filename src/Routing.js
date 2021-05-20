@@ -102,6 +102,8 @@ export default function Projec({ Cart,theme }) {
 
   const removeItem = (id)=>{
     const newCart = cartData.filter(c=>c.id!==id)
+    console.log("IDDD",id)
+    console.log("cartData",cartData)
     SetcartData(newCart)
   }
 
@@ -125,19 +127,33 @@ const setsize=(itemID,newsize)=>{
     SetdraweOpen( open );
   };
 
-  const addToCart = item=>{
-    const {id} = item
-    const indd = cartData.findIndex(cd=>id===cd.id)
-    if(indd !==-1){
-      // EXISTED
-     cartData[indd].quan +=1
-      SetcartData(cartData)
+  const addToCart = (item,openDrawer)=>{
+    const newItem = {...item}
 
+    newItem.quan=1
+    const uniqueID = Math.ceil(Math.random()*100000000)
+    console.log("UNIQ",uniqueID)
+    newItem.id = uniqueID
+    SetcartData([...cartData,newItem])
+
+    if(openDrawer){
+      SetdraweOpen( true );
     }else{
-      item.quan=1
-      SetcartData([...cartData,item])
+      
     }
-    SetdraweOpen( true );
+   
+    // const indd = cartData.findIndex(cd=>id===cd.id)
+    // if(indd !==-1){
+    //   // EXISTED
+    //  cartData[indd].quan +=1
+    //   SetcartData(cartData)
+
+    // }else{
+    //   item.quan=1
+    //   SetcartData([...cartData,item])
+    // }
+  
+    
   }
 
   const increaseQuantitly = (itemID,sign=1)=>{
@@ -165,7 +181,7 @@ const setsize=(itemID,newsize)=>{
               <Switch>
                 <Route exact path="/" render={props => <Cat/>} />
                 <Route exact path="/success" render={props => <Sucess/>} />
-                <Route exact path="/shop" render={props => <Shop addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>
+                <Route exact path="/shop" render={props => <Shop cartData={cartData} addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>
                 <Route exact path="/checkout" render={props => <Checkout cartData={cartData}/>} />
               </Switch>
               {/* <Footer /> */}

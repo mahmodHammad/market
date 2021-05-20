@@ -15,13 +15,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: 380,
     background:"#060606",
-    minHeight:"100vh",
+    height:"100vh",
     padding:10,
-
+  },
+  cartitems:{
+    overflow:"scroll",
+    height:"calc(100vh - 145px)"
   },
   title:{
     // color: theme.palette.txt.title,
-
   },
   button:{
     marginRight:10,
@@ -53,10 +55,11 @@ const useStyles = makeStyles((theme) => ({
     color:theme.palette.body2
   },
 lay:{
-  padding:10,
-  position:"absolute",
-  bottom:10,
-  width: "calc(100% - 10px)"
+  padding:15,
+  paddingBottom:20,
+  position:"fixed",
+  bottom:0,
+  width: "100%",
 },
 btnbottom:{
   // display:"flex",
@@ -108,49 +111,51 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
 // console.table([{title:"heloo",age:12},{title:"ffheloo",age:122},{title:"hffeloo",age:12},])
 
   return (
-    <List className={classes.root}>
-      {cartData.map((d,index)=><React.Fragment> 
-          <CartItem removeItem={removeItem} size={d.size} setsize={setsize} increaseQuantitly={increaseQuantitly} productID={d.id} img={d.avatar} title={d.title} quantity={d.quan} price={d.price} />
-          {index !==cartData.length-1?<Divider  component="li" className={classes.dividerStyle}/>:null
-      }
-      </React.Fragment>
-    )}
-    <div className={classes.lay}>
-        <Typography className={classes.totlaCost}>
-        Total Cost: ${GetTotalCost()}.00
-      </Typography>
-
-   <div className={classes.btnbottom}>
-
-      <Button
-      className={classes.button}
-      size="small"
-      color="primary"
-      variant="outlined"
-      // startIcon={<OpenInNewIcon />}
-      onClick={()=>{
-        toggleDrawer( false)}
-      }
-      >
-      close
-      </Button> 
-      <Button
-      className={classes.button}
-      size="small"
-      color="primary"
-      variant="contained"
-      // startIcon={<OpenInNewIcon />}
-      onClick={()=>{
-        toggleDrawer( false)
-        handleCheckout(formatforcheckout())
-      }
-    }
-    >
-      Checkout
-      </Button> 
-      </div>
-
+    <div className = {classes.root}> 
+      <List >
+        <div className={classes.cartitems}>
+          {cartData.map((d,index)=><React.Fragment> 
+              <CartItem removeItem={removeItem} size={d.size} setsize={setsize} increaseQuantitly={increaseQuantitly} productID={d.id} img={d.avatar} title={d.title} quantity={d.quan} price={d.price} />
+              {index !==cartData.length-1?<Divider  component="li" className={classes.dividerStyle}/>:null
+          }
+          </React.Fragment>
+        )}
         </div>
-    </List>
+        </List>
+
+      <div className={classes.lay}>
+          <Typography className={classes.totlaCost}>
+          Total Cost: ${GetTotalCost()}.00
+        </Typography>
+
+        <div className={classes.btnbottom}>
+            <Button
+            className={classes.button}
+            size="small"
+            color="primary"
+            variant="outlined"
+            onClick={()=>{
+              toggleDrawer( false)}
+            }
+            >
+            close
+            </Button> 
+            <Button
+            className={classes.button}
+            size="small"
+            color="primary"
+            variant="contained"
+            // startIcon={<OpenInNewIcon />}
+            onClick={()=>{
+              toggleDrawer( false)
+              handleCheckout(formatforcheckout())
+            }
+          }
+          >
+            Checkout
+          </Button> 
+        </div>
+      </div>
+    </div>
   );
 }

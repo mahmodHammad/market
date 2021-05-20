@@ -5,6 +5,7 @@ import CartItem from "../../pages/cart/components/Cart"
 
 const useStyles = makeStyles({
     root:{
+      // background:"#883355"
     },
 
 });
