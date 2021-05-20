@@ -29,7 +29,8 @@ const useStyles = makeStyles(theme => ({
   "@media (max-width: 600px)": {
     logo:{height:45}
   },badge:{
-    marginRight:10
+    marginRight:10,
+    marginBottom: -3
   }
 
 }));
@@ -89,7 +90,7 @@ export default function Navbar({ toggleDrawer ,isHomePage,cartData}) {
             {isHomePage?
               <Dropdwon toggleDrawer={toggleDrawer} />
               : 
-              <Badge className={classes.badge} badgeContent={itemsNumberOnCart} color="secondary">
+              <Badge className={classes.badge} badgeContent={itemsNumberOnCart} color="primary">
           
               <ShoppingCartIcon onClick={()=>toggleDrawer(true)} color="primary" fontSize="small" />
           </Badge>
