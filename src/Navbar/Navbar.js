@@ -51,7 +51,7 @@ function HideOnScroll(props) {
 
 export default function Navbar({ toggleDrawer ,isHomePage,cartData}) {
   const classes = useStyles();
-  const itemsNumberOnCart= cartData.length
+  const itemsNumberOnCart= isHomePage?0:cartData.length
   return (
     <div>
         <AppBar color="transparent" className={classes.nav}>

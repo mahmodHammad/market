@@ -96,7 +96,7 @@ export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
 
           <div className={classes.productAction}>
             <Typography className={classes.price} variant="body2" >
-                  $39.99
+                  $40.00
             </Typography>
 
             <IconButton
