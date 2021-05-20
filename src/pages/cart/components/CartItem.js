@@ -108,7 +108,7 @@ export default function CartItem({removeItem,size, setsize, productID,increaseQu
                   <Button
                   className={classes.DeleteBtn}
                   size="small"
-                  color="secondary"
+                  color="primary"
                   onClick={()=>removeItem(productID)}
                   startIcon={<DeleteForeverIcon size="small" fontSize="small" />}
                   >

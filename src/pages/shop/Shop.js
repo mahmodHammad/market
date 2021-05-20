@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 // import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Drawer from "../../Navbar/components/Drawer"
+import Navbar from "../../Navbar/Navbar"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -77,6 +78,13 @@ export default function Projec({ addToCart,products,toggleDrawer }) {
 
   return (
     <div className={classes.root}>
+        <Navbar
+          isDarkMode={true}
+          // draweOpen={draweOpen}
+          // toggleDrawer={toggleDrawer}
+          draweOpen={()=>console.log("draweopen")}
+          toggleDrawer={toggleDrawer}
+        />
         <Container>
           {products.map(product=><div className={classes.product}>
             <GridList tileData={product.images}/>

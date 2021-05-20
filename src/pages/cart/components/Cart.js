@@ -50,14 +50,18 @@ const useStyles = makeStyles((theme) => ({
     transform: "translateY(0)"
   },
   totlaCost:{
-    color:"#f00"
+    color:theme.palette.body2
   },
 lay:{
   padding:10,
   position:"absolute",
-  bottom:10
+  bottom:10,
+  width: "calc(100% - 10px)"
+},
+btnbottom:{
+  // display:"flex",
+  // justifyContent:"space-between"
 }
-
 }));
 
 export default function Cart({removeItem,setsize,increaseQuantitly,cartData,toggleDrawer}) {
@@ -102,6 +106,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
 }).catch(e=>console.log("a7aaaa",e))}
   
 // console.table([{title:"heloo",age:12},{title:"ffheloo",age:122},{title:"hffeloo",age:12},])
+
   return (
     <List className={classes.root}>
       {cartData.map((d,index)=><React.Fragment> 
@@ -111,39 +116,41 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
       </React.Fragment>
     )}
     <div className={classes.lay}>
-
         <Typography className={classes.totlaCost}>
-        Total Cost: {GetTotalCost()}
+        Total Cost: ${GetTotalCost()}.00
       </Typography>
 
+   <div className={classes.btnbottom}>
+
       <Button
       className={classes.button}
-      fontSize="large"
-      color="secondary"
-      variant="outlined"
-      // startIcon={<OpenInNewIcon />}
-      onClick={()=>{
-        toggleDrawer( false)
-        handleCheckout(formatforcheckout())
-      }
-      }
-      >
-      Checkout
-      </Button> 
-      <Button
-      className={classes.button}
-      fontSize="large"
-      color="secondary"
+      size="small"
+      color="primary"
       variant="outlined"
       // startIcon={<OpenInNewIcon />}
       onClick={()=>{
         toggleDrawer( false)}
       }
       >
-      Close
+      close
+      </Button> 
+      <Button
+      className={classes.button}
+      size="small"
+      color="primary"
+      variant="contained"
+      // startIcon={<OpenInNewIcon />}
+      onClick={()=>{
+        toggleDrawer( false)
+        handleCheckout(formatforcheckout())
+      }
+    }
+    >
+      Checkout
       </Button> 
       </div>
 
+        </div>
     </List>
   );
 }

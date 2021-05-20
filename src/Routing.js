@@ -159,17 +159,9 @@ const setsize=(itemID,newsize)=>{
   });
 
   return (
-        <div
-            style={{ background: theme.palette.background.default ,minHeight:"100vh"}}
-          >
+        <div style={{ background: theme.palette.background.default ,minHeight:"100vh"}}>
             <BrowserRouter>
-              <Navbar
-                isDarkMode={true}
-                draweOpen={draweOpen}
-                toggleDrawer={toggleDrawer}
-              />
             <Drawer removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
-
               <Switch>
                 <Route exact path="/" render={props => <Cat/>} />
                 <Route exact path="/success" render={props => <Sucess/>} />

@@ -6,11 +6,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
-import Grow from "@material-ui/core/Grow";
+import Slide from "@material-ui/core/Slide";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const useStyles = makeStyles(theme => ({
   dropdown: {
@@ -21,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CustomizedMenus() {
+export default function CustomizedMenus({toggleDrawer}) {
   const [Open, setOpen] = useState(false);
 
   const handleClick = event => {
@@ -32,6 +30,11 @@ export default function CustomizedMenus() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const openCart = ()=>{
+    handleClose()
+    toggleDrawer(true)
+  }
 
   const classes = useStyles();
 
@@ -44,17 +47,20 @@ export default function CustomizedMenus() {
         color="secondary"
         onClick={handleClick}
       >
-        <ShoppingCartIcon color="primary" fontSize="small" />
+        <MenuIcon color="primary" fontSize="small" />
       </IconButton>
 
       <ClickAwayListener touchEvent="onTouchStart" onClickAway={handleClose}>
-        <Grow in={Open}>
-          <Paper variant="outlined" className={classes.dropdown}>
+
+    
+
+  <Slide direction="left" in={Open} mountOnEnter unmountOnExit>
+
+          <Paper  className={classes.dropdown}>
             <Button
-              size="large"
+              size="small"
               color="primary"
-              onClick={handleClose}
-              startIcon={<AccountTreeIcon />}
+              onClick={openCart}
               fullWidth
               component={Link}
               to={{
@@ -68,7 +74,7 @@ export default function CustomizedMenus() {
             </Button>
             <Divider />
           </Paper>
-        </Grow>
+        </Slide>
       </ClickAwayListener>
     </div>
   );

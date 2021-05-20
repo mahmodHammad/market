@@ -4,6 +4,7 @@ import { startAnimationLoop ,requestID} from "./Animate";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
+import Navbar from "../Navbar/Navbar"
 
 const useStyles = makeStyles((theme) => ({
   btnContainer:{
@@ -18,9 +19,7 @@ const useStyles = makeStyles((theme) => ({
   
   }
 }))
-
-
-             
+        
 
 export default function Cat( ) {
   const classes = useStyles();
@@ -42,24 +41,16 @@ export default function Cat( ) {
 
   return (
     <React.Fragment>
-          <div className={classes.btnContainer}>
-               <Button
-                  className={classes.DeleteBtn}
-                  size="small"
-                  color="primary"
-                  variant="contained"
-                  component={Link}
-                  to={{
-                    pathname: "/shop",
-                    state: {
-                      scrollTo: "shop"
-                    }
-                 }}
-                  >
-                  Discover Now
-                  </Button>   
-                  
-        </div>
+       <Navbar
+       isHomePage={true}
+          isDarkMode={true}
+          // draweOpen={draweOpen}
+          // toggleDrawer={toggleDrawer}
+          draweOpen={()=>console.log("draweopen")}
+          toggleDrawer={()=>console.log("toggleDrawer")}
+        />
+
+         
       <div ref={textInput} className="canvas"></div>
 
   

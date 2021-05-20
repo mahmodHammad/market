@@ -10,6 +10,8 @@ import Slide from "@material-ui/core/Slide";
 import IconButton from "@material-ui/core/IconButton";
 import Dropdwon from "./components/Dropdown";
 import logo from "../assets/logo.png"
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
 const useStyles = makeStyles(theme => ({
   logoContainer: {
     flexGrow: 1,
@@ -43,7 +45,7 @@ function HideOnScroll(props) {
   );
 }
 
-export default function Navbar({ props }) {
+export default function Navbar({ toggleDrawer ,isHomePage}) {
   const classes = useStyles();
   return (
     <div>
@@ -61,7 +63,7 @@ export default function Navbar({ props }) {
             </div>
 
             <Hidden smDown={true}>
-              <Button
+            {true? <Button
                 size="large"
                 className={classes.study}
                 variant="outlined"
@@ -75,13 +77,35 @@ export default function Navbar({ props }) {
                 }}
               >
               Shop
-              </Button>
+              </Button>:null}
             </Hidden>
+
             <Hidden mdUp={true}>
-              <Dropdwon />
+            {isHomePage?
+              <Dropdwon toggleDrawer={toggleDrawer} />
+              : <IconButton
+              aria-controls="customized-menu"
+              aria-haspopup="true"
+              variant="contained"
+              color="secondary"
+              onClick={()=>toggleDrawer(true)}
+              
+            >
+              <ShoppingCartIcon color="primary" fontSize="small" />
+              </IconButton>
+
+            }
             </Hidden>
+
+           
+        
+
+
+
           </Toolbar>
         </AppBar>
     </div>
   );
 }
+
+
