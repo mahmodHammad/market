@@ -68,6 +68,13 @@ const useStyles = makeStyles(theme => ({
     border: "1px solid rgba(224, 224, 224, 0.5)",
     // borderColor:"inherit",
     padding: "7px 12px",
+  },
+  body:{
+    // paddingTop:120
+  },
+  "@media (min-width: 600px)": {
+    body:{paddingTop:45},
+    // nav:{marginBottom:100}
   }
 }));
 
@@ -87,7 +94,7 @@ export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
           draweOpen={()=>console.log("draweopen")}
           toggleDrawer={toggleDrawer}
         />
-        <Container>
+        <Container maxWidth="xs" className = {classes.body}>
           {products.map(product=><div className={classes.product}>
             <GridList tileData={product.images}/>
               <Typography className={classes.info} variant="body2" >

@@ -27,7 +27,8 @@ const useStyles = makeStyles(theme => ({
   },
   themeicon: { marginLeft: 4 },
   "@media (max-width: 600px)": {
-    logo:{height:45}
+    logo:{height:45},
+    // nav:{marginBottom:100}
   },badge:{
     marginRight:10,
     marginBottom: -3
