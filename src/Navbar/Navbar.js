@@ -40,20 +40,6 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-function HideOnScroll(props) {
-  const { children, window } = props;
-
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
-  const trigger = useScrollTrigger({ target: window ? window() : undefined });
-
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
 
 export default function Navbar({ toggleDrawer ,isHomePage,cartData}) {
   const classes = useStyles();
@@ -74,7 +60,7 @@ export default function Navbar({ toggleDrawer ,isHomePage,cartData}) {
             </div>
 
             <Hidden smDown={true}>
-            {true? <Button
+            {isHomePage? <Button
                 size="large"
                 className={classes.study}
                 variant="outlined"
@@ -88,7 +74,11 @@ export default function Navbar({ toggleDrawer ,isHomePage,cartData}) {
                 }}
               >
               Shop
-              </Button>:null}
+              </Button>:  <div className={classes.badgeContainer} onClick={()=>toggleDrawer(true)}>
+              <Badge className={classes.badge} badgeContent={itemsNumberOnCart} color="primary">
+                 <ShoppingCartIcon onClick={()=>toggleDrawer(true)} color="primary" fontSize="small" />
+              </Badge>
+             </div> }
             </Hidden>
 
             <Hidden mdUp={true}>
