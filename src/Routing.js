@@ -97,7 +97,6 @@ export default function Projec({ Cart,theme }) {
   const classes = useStyles();
   const [draweOpen, SetdraweOpen] = useState(false);
   const [cartData, SetcartData] = useState([
-    {id: "prod3", title: "NO tee", size: "L", price: 40,avatar:p1,quan:2}
   ]);
 
   const removeItem = (id)=>{

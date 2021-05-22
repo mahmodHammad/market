@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     // nav:{marginBottom:100}
   },badge:{
     marginRight:10,
-    marginBottom: -3
+    marginBottom: -2
   },
   badgeContainer:{
     padding: 20,
