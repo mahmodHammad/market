@@ -32,6 +32,10 @@ const useStyles = makeStyles(theme => ({
   },badge:{
     marginRight:10,
     marginBottom: -3
+  },
+  badgeContainer:{
+    padding: 20,
+    paddingRight: 0
   }
 
 }));
@@ -89,13 +93,13 @@ export default function Navbar({ toggleDrawer ,isHomePage,cartData}) {
 
             <Hidden mdUp={true}>
             {isHomePage?
-              <Dropdwon toggleDrawer={toggleDrawer} />
+              <Dropdwon toggleDrawer={toggleDrawer}  />
               : 
+             <div className={classes.badgeContainer} onClick={()=>toggleDrawer(true)}>
               <Badge className={classes.badge} badgeContent={itemsNumberOnCart} color="primary">
-          
-              <ShoppingCartIcon onClick={()=>toggleDrawer(true)} color="primary" fontSize="small" />
-          </Badge>
-             
+                 <ShoppingCartIcon onClick={()=>toggleDrawer(true)} color="primary" fontSize="small" />
+              </Badge>
+             </div> 
 
             }
             </Hidden>
