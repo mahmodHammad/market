@@ -8,15 +8,13 @@ import Navbar from "../Navbar/Navbar"
 
 const useStyles = makeStyles((theme) => ({
   btnContainer:{
-    display:"flex",
-    justifyContent:"center",
-    position:"relative",
-    top:"90vh",
+    
     // background:"#666"
     // left:"40%"
   },
-  btn:{
-  
+  body:{
+    overflow:"hidden",
+    height:"100vh"
   }
 }))
         
@@ -40,7 +38,7 @@ export default function Cat( ) {
   }, []);
 
   return (
-    <React.Fragment>
+    <div className={classes.body}>
        <Navbar
        isHomePage={true}
           isDarkMode={true}
@@ -54,7 +52,7 @@ export default function Cat( ) {
       <div ref={textInput} className="canvas"></div>
 
   
-    </React.Fragment>
+    </div>
   );
 }
 

@@ -169,7 +169,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
       </div>
     </React.Fragment>:<div className={classes.empty}>    
     <Typography className={classes.emptyText}>
-          Your cart is empty!
+          cart is empty!
         </Typography>
 
       

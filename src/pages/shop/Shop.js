@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme => ({
   body:{
     // paddingTop:120
   },
-  "@media (min-width: 600px)": {
+  "@media (min1-width: 600px)": {
     body:{paddingTop:45},
     // nav:{marginBottom:100}
   }

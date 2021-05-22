@@ -5,7 +5,9 @@ body {
 }
 
 canvas {
-  display: block;
+  display: hidden;
+  height:100vh !important;
+  overflow:hidden;
 }
 
 .App{
