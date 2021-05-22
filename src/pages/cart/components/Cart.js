@@ -136,7 +136,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
 
       <div className={classes.lay}>
           <Typography className={classes.totlaCost}>
-          Total Cost: ${GetTotalCost()}.00
+          Total Cost: ${GetTotalCost()/100}.00
         </Typography>
 
         <div className={classes.btnbottom}>
@@ -169,7 +169,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
       </div>
     </React.Fragment>:<div className={classes.empty}>    
     <Typography className={classes.emptyText}>
-          cart is empty!
+          cart empty!
         </Typography>
 
       

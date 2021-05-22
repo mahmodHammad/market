@@ -116,7 +116,7 @@ export default function CartItem({removeItem,size, setsize, productID,increaseQu
                   </Button>    
                 </div>
                 <Typography variant="body2" aria-label="comments"className={classes.priceLable} >
-                    ${price}.00 USD
+                    ${price/100}.00 USD
                 </Typography>
                 
             </div>
