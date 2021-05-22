@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import Slide from "@material-ui/core/Slide";
+import Popper from "@material-ui/core/Popper";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import { SettingsInputComponentOutlined } from "@material-ui/icons";
 
 
 const useStyles = makeStyles(theme => ({
@@ -19,23 +21,34 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CustomizedMenus({toggleDrawer}) {
+export default function CustomizedMenus() {
   const [Open, setOpen] = useState(false);
-
+  const [guard, setGuard] = useState(null);
+ 
   const handleClick = event => {
+  console.log(" handleClick",Open)
+
+    // setGuard(true)
     // the clickAwayLister overrride it so i had to use settimeout to make it happens after the clickAway
-    setTimeout(() => setOpen(!Open), 50);
+    const oldState = Open
+
+        setOpen(!oldState)
+
+        // setTimeout(()=>setGuard(false),10000)
+   
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+ 
 
-  const openCart = ()=>{
-    handleClose()
-    toggleDrawer(true)
-  }
+const handleClickaway = (e)=>{
+  console.log("TTT",e.target.tagName)
+if(e.target.tagName==="CANVAS"){
 
+      setOpen(false)
+
+}
+ 
+}
   const classes = useStyles();
 
   return (
@@ -50,17 +63,15 @@ export default function CustomizedMenus({toggleDrawer}) {
         <MenuIcon color="primary" fontSize="small" />
       </IconButton>
 
-      <ClickAwayListener touchEvent="onTouchStart" onClickAway={handleClose}>
+      <ClickAwayListener touchEvent="onTouchEnd" onClickAway={handleClickaway}>
 
-    
+  <Slide   direction="left" in={Open} mountOnEnter >
 
-  <Slide direction="left" in={Open} mountOnEnter unmountOnExit>
-
-          <Paper  className={classes.dropdown}>
+          <Paper   className={classes.dropdown}>
             <Button
               size="small"
               color="primary"
-              onClick={openCart}
+              onClick={()=> setOpen(false)}
               fullWidth
               component={Link}
               to={{
@@ -74,8 +85,10 @@ export default function CustomizedMenus({toggleDrawer}) {
             </Button>
             <Divider />
           </Paper>
-        </Slide>
-      </ClickAwayListener>
+          </Slide>
+
+    </ClickAwayListener>
     </div>
+
   );
 }
