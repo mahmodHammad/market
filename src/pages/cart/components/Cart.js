@@ -114,7 +114,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
     Size: "L",
     Images: ["https://cdn.wallpapersafari.com/38/45/KftFVL.jpg"]}
 
-    axios.get("http://161.35.99.4:5000/products",fdata).then(r=>{
+    axios.get("http://localhost:5000/products",fdata).then(r=>{
   console.log("WOOOOW",r) 
 }).catch(e=>console.log("a7aaaa",e))}
   

@@ -24,7 +24,7 @@ const stripePromise = loadStripe("pk_test_51IoFwwAWo4uBcmc7Xy1DSsvv27WmtFWwbJyET
   const handleClick = async (body) => {
     const stripe = await stripePromise;
     console.log("BOOOOOOOOOOOOODY",body)
-    const response = await fetch("http://161.35.99.4:5000/create-checkout-session", {
+    const response = await fetch("http://localhost:5000/create-checkout-session", {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body),

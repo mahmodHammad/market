@@ -17,7 +17,7 @@ export default function Sucess() {
   const classes = useStyles();
   useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
-    axios.get("http://161.35.99.4:5000/dashboard/orders").then(o=>  console.log("HIHIHIH",o)
+    axios.get("http://localhost:5000/dashboard/orders").then(o=>  console.log("HIHIHIH",o)
         ).catch(e=>console.log("ERR",e))
   });
 
