@@ -9,7 +9,7 @@ import Drawer from "./Navbar/components/Drawer"
 import Button from '@material-ui/core/Button';
 import "./App.css";
 import Sucess from "./pages/feedback/Sucess"
-
+import Dash from "./pages/Dash/Dash"
 
 import p1 from "./assets/p1.jpeg"
 import p2 from "./assets/p2.jpeg"
@@ -179,6 +179,7 @@ const setsize=(itemID,newsize)=>{
             <Drawer removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
               <Switch>
                 <Route exact path="/" render={props => <Cat/>} />
+                <Route exact path="/dash" render={props => <Dash/>} />
                 <Route exact path="/success" render={props => <Sucess/>} />
                 <Route exact path="/shop" render={props => <Shop cartData={cartData} addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>
                 <Route exact path="/checkout" render={props => <Checkout cartData={cartData}/>} />
