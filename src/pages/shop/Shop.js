@@ -62,10 +62,12 @@ const useStyles = makeStyles(theme => ({
     // float:"right"
   },
   addToshop:{
+    height: 20,
     fontSize:19
   },
   btnParent:{
     border: "1px solid rgba(224, 224, 224, 0.5)",
+    // height: 20,
     // borderColor:"inherit",
     padding: "7px 12px",
   },
@@ -108,7 +110,6 @@ export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
 
             <IconButton
               className={`${classes.cartbtn} ${classes.btnParent}`}
-              
               fontSize="small"
               size="small"
               color="primary"
