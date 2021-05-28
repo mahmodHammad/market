@@ -18,7 +18,6 @@ export default function TemporaryDrawer({removeItem,setsize,increaseQuantitly,dr
       },[cartData]);
     
     const classes = useStyles();
-  console.log("CART DATA AT DRAWER",cartData)
   return (
     <Drawer className={classes.root} anchor="right" open={draweOpen} onClose={()=>toggleDrawer( false)}>
         <CartItem removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} cartData={cartData} toggleDrawer={toggleDrawer}/>

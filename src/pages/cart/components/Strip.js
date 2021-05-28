@@ -23,13 +23,11 @@ const stripePromise = loadStripe("pk_test_51IoFwwAWo4uBcmc7Xy1DSsvv27WmtFWwbJyET
 
   const handleClick = async (body) => {
     const stripe = await stripePromise;
-    console.log("BOOOOOOOOOOOOODY",body)
-    const response = await fetch("http://nodejsserv.terraform.live/create-checkout-session", {
+    const response = await fetch("https://nodejsserv.terraform.live/create-checkout-session", {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body),
     });
-    console.log("RESPONSE",response)
 
     const session = await response.json();
 
@@ -42,7 +40,7 @@ const stripePromise = loadStripe("pk_test_51IoFwwAWo4uBcmc7Xy1DSsvv27WmtFWwbJyET
       // If `redirectToCheckout` fails due to a browser or network
       // error, display the localized error message to your customer
       // using `result.error.message`.
-      console.log("FUCKEN ERROR",result.error.message)
+      console.log("ERROR",result.error.message)
     }
   };
 

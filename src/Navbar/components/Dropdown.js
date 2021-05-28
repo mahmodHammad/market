@@ -26,7 +26,6 @@ export default function CustomizedMenus() {
   const [guard, setGuard] = useState(null);
  
   const handleClick = event => {
-  console.log(" handleClick",Open)
 
     // setGuard(true)
     // the clickAwayLister overrride it so i had to use settimeout to make it happens after the clickAway
@@ -41,7 +40,6 @@ export default function CustomizedMenus() {
  
 
 const handleClickaway = (e)=>{
-  console.log("TTT",e.target.tagName)
 if(e.target.tagName==="CANVAS"){
 
       setOpen(false)

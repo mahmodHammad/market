@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     // nav:{marginBottom:100}
   },badge:{
     marginRight:10,
-    marginBottom: -2
+    marginBottom: -1
   },
   badgeContainer:{
     padding: 20,
@@ -49,7 +49,7 @@ export default function Navbar({ toggleDrawer ,isHomePage,cartData}) {
         <AppBar color="transparent" className={classes.nav}>
           <Toolbar>
             <div className={classes.logoContainer}>
-              <IconButton onClick={()=>window.scrollTo(0, 0)} color="secondary" component={Link} to="/" size="large">
+              <IconButton disableRipple={false} color="secondary" component={Link} to="/" size="large">
                   <img
                   className={classes.logo}
                   src={logo}

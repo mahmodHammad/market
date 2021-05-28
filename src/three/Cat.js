@@ -32,8 +32,8 @@ export default function Cat( ) {
     
     return () => {
       // Anything in here is fired on component unmount.
-      window.cancelAnimationFrame(requestID);
-          controls.dispose();
+      // window.cancelAnimationFrame(requestID);
+          // controls.dispose();
   }
   }, []);
 
@@ -44,8 +44,8 @@ export default function Cat( ) {
           isDarkMode={true}
           // draweOpen={draweOpen}
           // toggleDrawer={toggleDrawer}
-          draweOpen={()=>console.log("draweopen")}
-          toggleDrawer={()=>console.log("toggleDrawer")}
+          draweOpen={()=>console.log("")}
+          toggleDrawer={()=>console.log("")}
         />
 
          

@@ -93,17 +93,15 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
       const data = {
         name,
         amount: c.price,
-        images:[`https://earth-mz1hv9zj3-mahmodhammad.vercel.app/${c.avatar}`], 
+        images:[`https://terraform.live/${c.avatar}`], 
         quantity:c.quan
       }
       return data
     })
-    console.log("خد ياعم",formatted)
      return formatted
   }
 
   const callapi=()=>{
-    console.log("cartData",cartData)
   const fdata = { 
     
     Title:"Allah akbar",
@@ -115,7 +113,6 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
     Images: ["https://cdn.wallpapersafari.com/38/45/KftFVL.jpg"]}
 
     axios.get("http://nodejsserv.terraform.live/products",fdata).then(r=>{
-  console.log("WOOOOW",r) 
 }).catch(e=>console.log("a7aaaa",e))}
   
 // console.table([{title:"heloo",age:12},{title:"ffheloo",age:122},{title:"hffeloo",age:12},])
@@ -159,6 +156,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
             // startIcon={<OpenInNewIcon />}
             onClick={()=>{
               toggleDrawer( false)
+              // formatforcheckout()
               handleCheckout(formatforcheckout())
             }
           }

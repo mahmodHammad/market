@@ -30,7 +30,6 @@ export default function NativeSelects({id,size,setsize}) {
   const classes = useStyles();
 
   const handleChange = (event) => {
-      console.log("VALUEE",event.target.value)
     const name = event.target.name;
     setsize(id,event.target.value);
   };

@@ -11,7 +11,6 @@ import IconButton from '@material-ui/core/IconButton';
 
 // import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import Drawer from "../../Navbar/components/Drawer"
 import Navbar from "../../Navbar/Navbar"
 
 const useStyles = makeStyles(theme => ({
@@ -53,6 +52,7 @@ const useStyles = makeStyles(theme => ({
     // color: "#fff",
     // padding: "2px 11px",
     borderRadius: 4,
+    height: 39,
     margin: "16px 2px",
     textShadow:"1px 1px 2px #0002",
 
@@ -62,7 +62,6 @@ const useStyles = makeStyles(theme => ({
     // float:"right"
   },
   addToshop:{
-    height: 20,
     fontSize:19
   },
   btnParent:{
@@ -93,7 +92,7 @@ export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
           isDarkMode={true}
           // draweOpen={draweOpen}
           // toggleDrawer={toggleDrawer}
-          draweOpen={()=>console.log("draweopen")}
+          draweOpen={()=>console.log("")}
           toggleDrawer={toggleDrawer}
         />
         <Container maxWidth="xs" className = {classes.body}>

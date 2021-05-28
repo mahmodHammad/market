@@ -101,8 +101,6 @@ export default function Projec({ Cart,theme }) {
 
   const removeItem = (id)=>{
     const newCart = cartData.filter(c=>c.id!==id)
-    console.log("IDDD",id)
-    console.log("cartData",cartData)
     SetcartData(newCart)
   }
 
@@ -112,14 +110,12 @@ const setsize=(itemID,newsize)=>{
     // EXISTED
     
    cartData[indd].size = newsize
-   console.log("ADDING WOW",cartData)
    const old = [...cartData]
     SetcartData(old)
   }
 }
  
   const toggleDrawer = ( open) => {
-    console.log("TOGGLE",open)
     // if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
     //   return;
     // }
@@ -131,7 +127,6 @@ const setsize=(itemID,newsize)=>{
 
     newItem.quan=1
     const uniqueID = Math.ceil(Math.random()*100000000)
-    console.log("UNIQ",uniqueID)
     newItem.id = uniqueID
     SetcartData([...cartData,newItem])
 
@@ -156,13 +151,11 @@ const setsize=(itemID,newsize)=>{
   }
 
   const increaseQuantitly = (itemID,sign=1)=>{
-    console.log("ADD ITEM",itemID)
     const indd = cartData.findIndex(cd=>itemID===cd.id)
     if(indd !==-1){
       // EXISTED
       
      cartData[indd].quan += sign
-     console.log("ADDING WOW",cartData)
      const old = [...cartData]
       SetcartData(old)
     }
