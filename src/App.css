@@ -1,18 +1,24 @@
 body {
   margin: 0;
   overflow: hidden;
-  height:100vh
+  height:100vh;
+  width: 100vw !important;
   /* background: radial-gradient(circle, #eaeaea 0%, #777 100%); */
 }
 
 canvas {
   display: hidden;
   max-height:100vh !important;
+  width: 100vw !important;
   overflow:hidden;
 }
+.canvas{
+  /* display: none; */
+  width: 100vw !important;
 
+}
 .App{
-  width: 30vw !important;
+  /* width: 30vw !important; */
 }
 .MuiDrawer-paper{
   /* background: #050505 !important; */

@@ -82,16 +82,13 @@ const products = [
   ]
 const useStyles = makeStyles(theme => ({
   root: {
-    // padding: 10,
     paddingTop: 90,
-    // color: theme.palette.txt.body,
   },
   button:{
-      margin:20,
+    margin:20,
     float:"right"
-    }
+  }
 }));
-
 
 export default function Projec({ Cart,theme }) {
   const classes = useStyles();

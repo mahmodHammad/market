@@ -5,10 +5,8 @@ import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Badge from "@material-ui/core/Badge";
 
-import Slide from "@material-ui/core/Slide";
 import IconButton from "@material-ui/core/IconButton";
 import Dropdwon from "./components/Dropdown";
 import logo from "../assets/logo.png"
@@ -19,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     justifyContent: "left"
   },
-  logo: { height: 80, marginLeft: -10 },
+  logo: { height: 60, marginLeft: -10 },
   nav: { background: "#000"},
   study: {
     padding: "2px 10px",

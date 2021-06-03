@@ -1,20 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { sceneSetup, scene ,controls} from "./setup";
 import { startAnimationLoop ,requestID} from "./Animate";
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar"
 
 const useStyles = makeStyles((theme) => ({
   btnContainer:{
-    
-    // background:"#666"
-    // left:"40%"
   },
   body:{
     overflow:"hidden",
-    height:"100vh"
+    height:"100vh",
+    width:"100vw"
   }
 }))
         
@@ -24,8 +20,10 @@ export default function Cat( ) {
   const textInput = useRef(null);
 
   useEffect(() => {
-
-      scene.clear()
+      if(scene){
+        console.log("HEU SCENE",scene)
+        scene.clear()
+      }
       const canvasTarget = textInput.current;
       sceneSetup(canvasTarget);
       startAnimationLoop();

@@ -17,7 +17,7 @@ export default function Sucess() {
   const classes = useStyles();
   useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
-    axios.get("http://nodejsserv.terraform.live/dashboard/orders").then(o=>  console.log("HIHIHIH",o)
+    axios.get("https://nodejsserv.terraform.live/dashboard/orders").then(o=>  console.log("HIHIHIH",o)
         ).catch(e=>console.log("ERR",e))
   });
 

@@ -76,7 +76,11 @@ const handleWindowResize = () => {
 };
 // ----------------------------------------------> setup
 const sceneSetup = (root) => {
-  renderer.setSize(width, height);
+  console.log("ROTTTT:,",root.offsetWidth)
+  console.log("RfOTTTT:,",root.offsetHeight)
+  // console.log("fuck:,",root)
+  renderer.setSize(root.offsetWidth , height);
+  camera.aspect = root.offsetWidth / height;
   root.appendChild(renderer.domElement);
   window.addEventListener("resize", handleWindowResize);
   if (settings.developmentModel) {
