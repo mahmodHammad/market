@@ -6,12 +6,11 @@ import Container from "@material-ui/core/Container";
 // import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import GridList from "./components/Gridlist"
 import IconButton from '@material-ui/core/IconButton';
 
 // import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import Product from "./components/Product"
+
 const useStyles = makeStyles(theme => ({
   root: {
     // padding: 10,
@@ -78,18 +77,50 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
+export default function Projec({ addToCart,product}) {
   const classes = useStyles();
   useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
   });
 
   return (
-    <div className={classes.root}>
-        <Container maxWidth="xs" className = {classes.body}>
-          {products.map(product=><Product product={product} addToCart={addToCart}/>)}
-        
-        </Container>
+    <div className={classes.product}>
+    <Typography >
+      {product.title}
+      </Typography>
+      <Typography className={classes.info} variant="body2" >
+        {product.description}
+      </Typography>
+
+  <div className={classes.productAction}>
+    <Typography className={classes.price} variant="body2" >
+          ${product.price/100}.00
+    </Typography>
+
+    <IconButton
+      className={`${classes.cartbtn} ${classes.btnParent}`}
+      fontSize="small"
+      size="small"
+      color="primary"
+      variant="outlined"
+      onClick={()=>addToCart( product)}
+    >
+     <AddShoppingCartIcon className={classes.addToshop} fontSize="small"/>
+    </IconButton> 
+    <Button
+      className={classes.cartbtn}
+      fontSize="small"
+      size="small"
+      color="primary"
+      variant="outlined"
+      startIcon={<AddShoppingCartIcon />}
+      onClick={()=>addToCart( product,true)}
+    >
+      & checkout
+    </Button> 
+  
     </div>
+
+  </div>
   );
 }

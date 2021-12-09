@@ -4,7 +4,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
 
 import IconButton from "@material-ui/core/IconButton";
@@ -12,13 +11,14 @@ import Dropdwon from "./components/Dropdown";
 import logo from "../assets/logo.png"
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
+import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
   logoContainer: {
     flexGrow: 1,
     justifyContent: "left"
   },
   logo: { height: 60, marginLeft: -10 },
-  nav: { background: "#000"},
+  nav: { background: "#000", marginBottom:50},
   study: {
     padding: "2px 10px",
     margin: 2,

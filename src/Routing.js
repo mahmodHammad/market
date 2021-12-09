@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar/Navbar";
-import Cat from "./three/Cat"
 import Shop from "./pages/shop/Shop"
+import Home from "./pages/home/Home"
 import Checkout from "./pages/checkout/Checkout"
 import { makeStyles } from "@material-ui/core/styles";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button';
 import "./App.css";
 import Sucess from "./pages/feedback/Sucess"
 import Dash from "./pages/Dash/Dash"
+import SignIn from "./pages/sign/SignIn"
+import Signup from "./pages/sign/Signup"
 
 import p1 from "./assets/p1.jpeg"
 import p2 from "./assets/p2.jpeg"
@@ -29,56 +31,71 @@ const products = [
       {
         img: p1,
         alt: 'Image',
-        cols: 2,
+        cols: 4,
       },
-      {
-          img: p2,
-          alt: 'Image',
-          cols: 2,
-        },
-        {
-          img: l1,
-          alt: 'Image',
-          cols: 1,
-        },
-      {
-          img: l2,
-          alt: 'Image',
-          cols: 1,
-        },
-      
     ]
   },
-  // {
-  //   id:"Mahmoud",
-  //   title:"Mahmoud",
-  //   size:"L",
-  //   price:1899,
-  //   avatar:Avatar,
-  //   description:"  I need to sleep :( ",
-  //   images:[
-  //     {
-  //       img: l1,
-  //       alt: 'Image',
-  //       cols: 2,
-  //     },
-  //     {
-  //         img: p2,
-  //         alt: 'Image',
-  //         cols: 1,
-  //       },
-  //     {
-  //         img: l2,
-  //         alt: 'Image',
-  //         cols: 2,
-  //       },
-  //       {
-  //         img: p1,
-  //         alt: 'Image',
-  //         cols: 1,
-  //       },
-  //   ]
-  // }
+  {
+    id:"prod1",
+    title:"EM tee",
+    size:"L",
+    price:4000,
+    avatar:Avatar,
+    description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
+    images:[
+      {
+        img: p1,
+        alt: 'Image',
+        cols: 4,
+      },
+    ]
+  },
+
+  {
+    id:"prod1",
+    title:"EM tee",
+    size:"L",
+    price:4000,
+    avatar:Avatar,
+    description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
+    images:[
+      {
+        img: p1,
+        alt: 'Image',
+        cols: 4,
+      },
+    ]
+  },
+  {
+    id:"prod1",
+    title:"EM tee",
+    size:"L",
+    price:4000,
+    avatar:Avatar,
+    description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
+    images:[
+      {
+        img: p1,
+        alt: 'Image',
+        cols: 4,
+      },
+    ]
+  },
+  {
+    id:"prod1",
+    title:"EM tee",
+    size:"L",
+    price:4000,
+    avatar:Avatar,
+    description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
+    images:[
+      {
+        img: p1,
+        alt: 'Image',
+        cols: 4,
+      },
+    ]
+  },
   ]
 const useStyles = makeStyles(theme => ({
   root: {
@@ -166,14 +183,29 @@ const setsize=(itemID,newsize)=>{
   return (
         <div style={{ background: theme.palette.background.default ,minHeight:"100vh"}}>
             <BrowserRouter>
+            <Navbar
+       isHomePage={false}
+          isDarkMode={true}
+          // draweOpen={draweOpen}
+          // toggleDrawer={toggleDrawer}
+          draweOpen={()=>console.log("")}
+          toggleDrawer={toggleDrawer}
+          cartData={cartData}
+        />
+
             <Drawer removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
+              <div style={{marginTop:84}}>
               <Switch>
-                <Route exact path="/" render={props => <Cat/>} />
+                <Route exact path="/" render={props => <Home/>} />
+                <Route exact path="/login" render={props => <SignIn/>} />
+                <Route exact path="/signUp" render={props => <Signup/>} />
                 <Route exact path="/dash" render={props => <Dash/>} />
                 <Route exact path="/success" render={props => <Sucess/>} />
                 <Route exact path="/shop" render={props => <Shop cartData={cartData} addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>
                 <Route exact path="/checkout" render={props => <Checkout cartData={cartData}/>} />
               </Switch>
+              </div>
+
               {/* <Footer /> */}
             </BrowserRouter>
           </div>
