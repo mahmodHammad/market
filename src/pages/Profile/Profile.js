@@ -12,6 +12,8 @@ import Item from "./components/Item"
 // import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+
 const useStyles = makeStyles(theme => ({
 
   root: {
@@ -21,6 +23,22 @@ const useStyles = makeStyles(theme => ({
     // textAlign: "center"
   },
   header:{
+    border:"1px solid #444",
+    marginTop:"30px",
+    marginBottom:"60px",
+    borderRadius:7,
+    background:"#191919",
+    padding:"10px 20px",
+    display:"flex",
+    justifyContent:"space-between",
+    alignItems:"center",
+    width:"100%"
+
+  },
+  headerItem:{
+    // background:"#222",
+  },
+  headerTitle:{
     marginBottom:40
   },
 
@@ -54,7 +72,15 @@ export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
   return (
     <div className={classes.root}>
         <Container  className = {classes.body}>
-          <Typography className={classes.header} variant="h5" justifyContent="center" align="center">
+        <div className={classes.header}>
+              <Typography className={classes.headerItem}> Current Credit: $50 </Typography>
+         <div>
+              <Button size="small" style={{marginRight:20}} component={Link} to="/profile" variant="outlined"> Deposit credit </Button> 
+              <Button size="small" component={Link} to="/profile" variant="outlined"> Your Dashboard </Button> 
+        </div>
+       
+          </div>
+          <Typography className={classes.headerTitle} variant="h5" justifyContent="center" align="center">
             Your Products
           </Typography>
  
