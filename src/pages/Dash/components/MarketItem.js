@@ -6,7 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
-
  
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
@@ -14,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 }))
  
 
-export default function OutlinedCard() {
+export default function OutlinedCard({market,SetactiveMarket}) {
  
 
   const classes = useStyles();
@@ -22,15 +21,16 @@ export default function OutlinedCard() {
   return (
       <Card variant="outlined">
         <CardContent >
-    
+  
         <Typography align="center" variant="h5" component="div" >
-            Sigma
+            {market.username}
         </Typography>
         
         
         </CardContent>
         <CardActions className={classes.btn}>
-        <Button component={Link} to="/shop" variant="outlined" fullWidth size="small">Visit store</Button>
+       
+        <Button  component={Link}  to={`/shop?backUrl=${market._id}`}  variant="outlined" fullWidth size="small">Visit store</Button>
         </CardActions>
     </Card>
     

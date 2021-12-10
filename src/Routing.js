@@ -13,24 +13,12 @@ import Dash from "./pages/Dash/Dash"
 import Profile from "./pages/Profile/Profile"
 import SignIn from "./pages/sign/SignIn"
 import Signup from "./pages/sign/Signup"
+import axios from "axios"
 
 import p1 from "./assets/p1.jpeg"
 import Avatar from "./assets/avatar.jpeg"
 
-const products = [
-  {
-    id:"prod1",
-    title:"EM tee",
-    price:40,
-    description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
-  },
-  {
-    id:"prod12",
-    title:"Hello tee",
-    price:30,
-    description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
-  },
-  ]
+ 
 const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 90,
@@ -44,6 +32,11 @@ const useStyles = makeStyles(theme => ({
 export default function Projec({ Cart,theme }) {
   const classes = useStyles();
   const [draweOpen, SetdraweOpen] = useState(false);
+  const [activeMarket, SetactiveMarket] = useState({});
+  const [username, Setusername] = useState("");
+
+  const [Tocken,setTocken]  = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYxYjM3N2RhYjcyNzZkYTM2ZDE1MGJhMSIsInVzZXJuYW1lIjoia2lyb2xvcyIsImVtYWlsIjoia0BrMC5jbyIsImJhbGFuY2UiOjAsImVhcm5pbmdzIjowLCJsb2NhdGlvbiI6IkVhc3QifSwiaWF0IjoxNjM5MTUxOTAwLCJleHAiOjE2NzA3MDk1MDB9.Z5I5rRU000DycaYTlZHSq3PMbujCF6sBPCco43t8KD0")
+  
   const [creadit, setcreadit] = useState(40);
   const [cartData, SetcartData] = useState([
   ]);
@@ -73,7 +66,7 @@ const setsize=(itemID,newsize)=>{
 
   const addToCart = (item,openDrawer)=>{
     const newItem = {...item}
-    const found = cartData.findIndex(c=>c.id==item.id)
+    const found = cartData.findIndex(c=>c._id==item._id)
     if(found == -1){
       newItem.quan=1
       SetcartData([...cartData,newItem])
@@ -131,9 +124,19 @@ const setsize=(itemID,newsize)=>{
   }
 
   useEffect(() => {
-  
+    axios.get('https://dd61-45-243-66-42.ngrok.io/api/auth',{headers:{"auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYxYjM3N2RhYjcyNzZkYTM2ZDE1MGJhMSIsInVzZXJuYW1lIjoia2lyb2xvcyIsImVtYWlsIjoia0BrMC5jbyIsImJhbGFuY2UiOjAsImVhcm5pbmdzIjowLCJsb2NhdGlvbiI6IkVhc3QifSwiaWF0IjoxNjM5MTUxOTAwLCJleHAiOjE2NzA3MDk1MDB9.Z5I5rRU000DycaYTlZHSq3PMbujCF6sBPCco43t8KD0"}}).
+  then(function (response) {
+    const userName = response.data.user.username
+    const balance = response.data.user.balance
+    setcreadit(balance)
+    Setusername("userName")
+
+    console.log("RES",response)
+  })
+
+    
     // const info = AllProjects.find(e => e.id === projId);
-  });
+  },[]);
 
   return (
         <div style={{ background: theme.palette.background.default ,minHeight:"100vh"}}>
@@ -151,13 +154,13 @@ const setsize=(itemID,newsize)=>{
             <Drawer handleCheckout={handleCheckout} removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
               <div style={{marginTop:84}}>
               <Switch>
-                <Route exact path="/" render={props => <Home creadit={creadit}/>} />
+                <Route exact path="/" render={props => <Home name={username} creadit={creadit}/>} />
                 <Route exact path="/profile" render={props => <Profile onDeposit={onDeposit} creadit={creadit} setcreadit={setcreadit}/>} />
                 <Route exact path="/login" render={props => <SignIn/>} />
                 <Route exact path="/signUp" render={props => <Signup/>} />
-                <Route exact path="/dash" render={props => <Dash creadit={creadit}/>} />
+                <Route exact path="/dash" render={props => <Dash name={username} SetactiveMarket={()=>console.log("HEYYYFYFYFY")} creadit={22}/>} />
                 <Route exact path="/success" render={props => <Sucess/>} />
-                <Route exact path="/shop" render={props => <Shop cartData={cartData} addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>
+                <Route exact path="/shop" render={props => <Shop activeMarket={activeMarket} cartData={cartData} addToCart={addToCart} toggleDrawer={toggleDrawer} />}/>
                 <Route exact path="/checkout" render={props => <Checkout cartData={cartData}/>} />
               </Switch>
               </div>

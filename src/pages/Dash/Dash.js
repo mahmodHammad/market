@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import MarketItem from "./components/MarketItem"
 import axios from "axios"
 import { Link } from "react-router-dom";
+// const axios = require('axios').default;
 
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
@@ -33,13 +34,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Sucess({creadit}) {
-    const [orders,setOrders]  = useState([])
+export default function Sucess({creadit,SetactiveMarket,name}) {
+    const [markets,setmarkets]  = useState([])
   const classes = useStyles();
   useEffect(() => {
-    // const info = AllProjects.find(e => e.id === projId);
-    axios.get("https://nodejsserv.terraform.live/dashboard/orders").then(o=>  console.log("HIHIHIH",o)
-        ).catch(e=>console.log("ERR",e))
+    axios.get('https://dd61-45-243-66-42.ngrok.io/api/stores',{headers:{"auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYxYjM3N2RhYjcyNzZkYTM2ZDE1MGJhMSIsInVzZXJuYW1lIjoia2lyb2xvcyIsImVtYWlsIjoia0BrMC5jbyIsImJhbGFuY2UiOjAsImVhcm5pbmdzIjowLCJsb2NhdGlvbiI6IkVhc3QifSwiaWF0IjoxNjM5MTUxOTAwLCJleHAiOjE2NzA3MDk1MDB9.Z5I5rRU000DycaYTlZHSq3PMbujCF6sBPCco43t8KD0"}})
+  .then(function (response) {
+    const stores= response.data.stores
+    setmarkets(stores)
+  })
+
   });
 
   const getData = (OrderID)=>{
@@ -50,7 +54,7 @@ export default function Sucess({creadit}) {
     <div className={classes.root}>
         <Container>
           <div className={classes.header}>
-              <Typography className={classes.headerItem}> Hello: Mahmoud </Typography>
+              <Typography className={classes.headerItem}> Hello: {name} </Typography>
               <Typography className={classes.headerItem}> Current Credit: ${creadit} </Typography>
               <Button component={Link} to="/profile" variant="contained"> Your Dashboard </Button> 
           </div>
@@ -59,21 +63,11 @@ export default function Sucess({creadit}) {
           </Typography>
           <div className={classes.marketsContiner}>
              <Grid container spacing={2}>
-              <Grid item xs={3}>
-                <MarketItem/>
-              </Grid>
-              <Grid item xs={3}>
-                <MarketItem/>
-              </Grid>
-              <Grid item xs={3}>
-                <MarketItem/>
-              </Grid>
-              <Grid item xs={3}>
-                <MarketItem/>
-              </Grid>
-              <Grid item xs={3}>
-                <MarketItem/>
-              </Grid>
+              {markets.map(m=> <Grid item xs={3}>
+                <MarketItem SetactiveMarket={SetactiveMarket} market = {m}/>
+              </Grid>)}
+             
+              
             </Grid>
           </div>
         </Container>

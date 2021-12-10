@@ -93,7 +93,7 @@ export default function Projec({ addToCart,product}) {
           <Card className={classes.product} variant="outlined">
 <CardContent>
     <Typography variant="h6"  align="center"  >
-      {product.title}
+      {product.name}
       </Typography>
       <Typography className={classes.info} variant="body2" >
         {product.description}

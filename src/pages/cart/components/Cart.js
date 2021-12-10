@@ -111,7 +111,7 @@ export default function Cart({handleCheckout,removeItem,setsize,increaseQuantitl
       <List >
         <div className={classes.cartitems}>
           {cartData.map((d,index)=><React.Fragment> 
-              <CartItem removeItem={removeItem} size={d.size} setsize={setsize} increaseQuantitly={increaseQuantitly} productID={d.id} img={d.avatar} title={d.title} quantity={d.quan} price={d.price} />
+              <CartItem removeItem={removeItem} size={d.size} setsize={setsize} increaseQuantitly={increaseQuantitly} productID={d._id} img={d.avatar} title={d.name} quantity={d.quan} price={d.price} />
               {index !==cartData.length-1?<Divider  component="li" className={classes.dividerStyle}/>:null
           }
           </React.Fragment>
@@ -159,17 +159,17 @@ export default function Cart({handleCheckout,removeItem,setsize,increaseQuantitl
         </Typography>
 
        <Button
-       fullWidth
-            className={classes.button}
-            size="small"
-            color="primary"
-            variant="outlined"
-            onClick={()=>{
-              toggleDrawer( false)}
-            }
-            >
-            Continue shopping
-            </Button>  </div>}
+          fullWidth
+          className={classes.button}
+          size="small"
+          color="primary"
+          variant="outlined"
+          onClick={()=>{
+            toggleDrawer( false)}
+          }
+          >
+          Continue shopping
+          </Button>  </div>}
     </div>
   );
 }

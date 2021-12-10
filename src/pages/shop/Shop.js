@@ -9,10 +9,13 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "./components/Gridlist"
 import IconButton from '@material-ui/core/IconButton';
+import { Link ,useLocation } from "react-router-dom";
 
 // import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Product from "./components/Product"
+import axios from "axios"
+
 const useStyles = makeStyles(theme => ({
 
   root: {
@@ -82,17 +85,32 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
-  const classes = useStyles();
+export default function Projec(props) {
+  const { addToCart,toggleDrawer ,cartData ,activeMarket} = props
+  const [products,setproducts]  = useState([ ])
+  const [title,settitle]  = useState("")
+ 
+  const id = useLocation().search.split("=")[1]
   useEffect(() => {
-    // const info = AllProjects.find(e => e.id === projId);
-  });
+    axios.get(`https://dd61-45-243-66-42.ngrok.io/api/store/${id}`,{headers:{"auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYxYjM3N2RhYjcyNzZkYTM2ZDE1MGJhMSIsInVzZXJuYW1lIjoia2lyb2xvcyIsImVtYWlsIjoia0BrMC5jbyIsImJhbGFuY2UiOjAsImVhcm5pbmdzIjowLCJsb2NhdGlvbiI6IkVhc3QifSwiaWF0IjoxNjM5MTUxOTAwLCJleHAiOjE2NzA3MDk1MDB9.Z5I5rRU000DycaYTlZHSq3PMbujCF6sBPCco43t8KD0"}})
+  .then(function (response) {
+    const prod = response.data.store[0].inventory
+    const username = response.data.store[0].username
+    settitle(username)
+    setproducts(prod)
+    console.log("response",response) 
+  })
+},[])
 
+  console.log("useLocation",useLocation())
+  const classes = useStyles();
+ 
   return (
     <div className={classes.root}>
         <Container  className = {classes.body}>
           <Typography className={classes.header} variant="h5" justifyContent="center" align="center">
-            Sigma market
+          {/* {activeMarket} */}
+          {title}
           </Typography>
 
           <Grid container spacing={6}>
