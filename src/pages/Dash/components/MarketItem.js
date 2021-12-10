@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from "react";
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -15,6 +15,8 @@ const useStyles = makeStyles(theme => ({
  
 
 export default function OutlinedCard() {
+ 
+
   const classes = useStyles();
 
   return (

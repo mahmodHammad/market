@@ -10,13 +10,11 @@ import Button from '@material-ui/core/Button';
 import "./App.css";
 import Sucess from "./pages/feedback/Sucess"
 import Dash from "./pages/Dash/Dash"
+import Profile from "./pages/Profile/Profile"
 import SignIn from "./pages/sign/SignIn"
 import Signup from "./pages/sign/Signup"
 
 import p1 from "./assets/p1.jpeg"
-import p2 from "./assets/p2.jpeg"
-import l1 from "./assets/l1.jpeg"
-import l2 from "./assets/l2.jpeg"
 import Avatar from "./assets/avatar.jpeg"
 
 const products = [
@@ -197,6 +195,9 @@ const setsize=(itemID,newsize)=>{
               <div style={{marginTop:84}}>
               <Switch>
                 <Route exact path="/" render={props => <Home/>} />
+                
+
+                <Route exact path="/profile" render={props => <Profile/>} />
                 <Route exact path="/login" render={props => <SignIn/>} />
                 <Route exact path="/signUp" render={props => <Signup/>} />
                 <Route exact path="/dash" render={props => <Dash/>} />

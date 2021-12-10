@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Grid from "@material-ui/core/Grid";
 
 import Button from "@material-ui/core/Button";
 
@@ -13,12 +14,15 @@ import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Product from "./components/Product"
 const useStyles = makeStyles(theme => ({
+
   root: {
     // padding: 10,
-    background:"#080808",
-    paddingTop: 100,
+    paddingTop: 40,
     minHeight:"100vh"
     // textAlign: "center"
+  },
+  header:{
+    marginBottom:40
   },
   img: {
     width: "100%",
@@ -86,9 +90,18 @@ export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
 
   return (
     <div className={classes.root}>
-        <Container maxWidth="xs" className = {classes.body}>
-          {products.map(product=><Product product={product} addToCart={addToCart}/>)}
-        
+        <Container  className = {classes.body}>
+          <Typography className={classes.header} variant="h5" justifyContent="center" align="center">
+            Sigma market
+          </Typography>
+
+          <Grid container spacing={6}>
+            {products.map(product=> 
+            <Grid item xs={4} className={classes.product} >
+              <Product product={product} addToCart={addToCart}/>
+            </Grid>
+            )}
+          </Grid>
         </Container>
     </div>
   );

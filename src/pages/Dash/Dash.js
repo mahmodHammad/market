@@ -8,6 +8,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import MarketItem from "./components/MarketItem"
 import axios from "axios"
+import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
@@ -51,7 +52,7 @@ export default function Sucess() {
           <div className={classes.header}>
               <Typography className={classes.headerItem}> Hello: Mahmoud </Typography>
               <Typography className={classes.headerItem}> Current Credit: 50$ </Typography>
-              <Button variant="contained"> Your Dashboard </Button> 
+              <Button component={Link} to="/profile" variant="contained"> Your Dashboard </Button> 
           </div>
           <Typography variant="h5" justifyContent="center" align="center">
             Avilable markets

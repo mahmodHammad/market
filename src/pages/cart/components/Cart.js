@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     padding:10,
   },
   cartitems:{
-    overflow:"scroll",
+    overflow:"auto",
     height:"calc(100vh - 145px)"
   },
   title:{
