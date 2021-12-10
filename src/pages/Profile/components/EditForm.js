@@ -50,7 +50,7 @@ export default function SignIn({setOpen,product,isCreate,onSubmit}) {
       name: Name,
       price: Price,
       description:Description,
-      id:product.id
+      id:"test"
     }
     // eslint-disable-next-line no-console
     setOpen(false)
