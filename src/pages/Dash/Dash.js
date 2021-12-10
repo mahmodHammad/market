@@ -44,7 +44,7 @@ export default function Sucess({creadit,SetactiveMarket,name}) {
     setmarkets(stores)
   })
 
-  });
+  },[]);
 
   const getData = (OrderID)=>{
     console.log("Get data of",OrderID)

@@ -64,8 +64,11 @@ const setsize=(itemID,newsize)=>{
     SetdraweOpen( open );
   };
 
-  const addToCart = (item,openDrawer)=>{
+  const addToCart = (item,openDrawer,sellerID)=>{
+    
     const newItem = {...item}
+    newItem.sellerID=sellerID;
+
     const found = cartData.findIndex(c=>c._id==item._id)
     if(found == -1){
       newItem.quan=1
@@ -108,17 +111,43 @@ const setsize=(itemID,newsize)=>{
   const handleCheckout =(cartItems,totalCost)=>{
     console.log("cartItems",cartItems)
     console.log("totalCost",totalCost)
-    if(creadit >= totalCost){
-      onDeposit(-totalCost)
-      SetcartData([])
-      alert("Your Order is placed!")
-    }else{
-      alert("No enough mony ya fa2eer")
-    }
+
+
+    cartItems.forEach(cartItem=>{
+      axios({
+        method: 'post',
+        url: 'https://dd61-45-243-66-42.ngrok.io/api/purchase-product',
+        headers: {"auth-token":Tocken}, 
+        data: {
+            "sellerID": cartItem.sellerID,
+            "productID": cartItem._id
+        }
+      }).then(r=>{
+        console.log("r",r)
+        const newAmount = creadit+ Number(-(cartItem.price * cartItem.quan))
+        setcreadit(newAmount)
+        SetcartData([])
+        alert("purches sucessfully")
+        SetdraweOpen(false)
+      }
+      ).catch(err=>{
+          alert("No enough money")
+      })
+    })
+
   }
 
   const onDeposit =(amount)=>{
     console.log("amm",amount)
+    axios({
+      method: 'post',
+      url: 'https://dd61-45-243-66-42.ngrok.io/api/increase-balance',
+      headers: {"auth-token":Tocken}, 
+      data: {
+        amount: amount, // This is the body part
+      }
+    }).then(r=>console.log("r",r))
+    
     const newAmount = creadit+ Number(amount)
     setcreadit(newAmount)
   }
@@ -154,13 +183,13 @@ const setsize=(itemID,newsize)=>{
             <Drawer handleCheckout={handleCheckout} removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
               <div style={{marginTop:84}}>
               <Switch>
-                <Route exact path="/" render={props => <Home name={username} creadit={creadit}/>} />
-                <Route exact path="/profile" render={props => <Profile onDeposit={onDeposit} creadit={creadit} setcreadit={setcreadit}/>} />
-                <Route exact path="/login" render={props => <SignIn/>} />
-                <Route exact path="/signUp" render={props => <Signup/>} />
-                <Route exact path="/dash" render={props => <Dash name={username} SetactiveMarket={()=>console.log("HEYYYFYFYFY")} creadit={22}/>} />
+                <Route exact path="/" render={props => <Home Tocken={Tocken} name={username} creadit={creadit}/>} />
+                <Route exact path="/profile" render={props => <Profile Tocken={Tocken} onDeposit={onDeposit} creadit={creadit} setcreadit={setcreadit}/>} />
+                <Route exact path="/login" render={props => <SignIn Tocken={Tocken}/>} />
+                <Route exact path="/signUp" render={props => <Signup Tocken={Tocken}/>} />
+                <Route exact path="/dash" render={props => <Dash Tocken={Tocken} name={username} SetactiveMarket={()=>console.log("HEYYYFYFYFY")} creadit={22}/>} />
                 <Route exact path="/success" render={props => <Sucess/>} />
-                <Route exact path="/shop" render={props => <Shop activeMarket={activeMarket} cartData={cartData} addToCart={addToCart} toggleDrawer={toggleDrawer} />}/>
+                <Route exact path="/shop" render={props => <Shop Tocken={Tocken} activeMarket={activeMarket} cartData={cartData} addToCart={addToCart} toggleDrawer={toggleDrawer} />}/>
                 <Route exact path="/checkout" render={props => <Checkout cartData={cartData}/>} />
               </Switch>
               </div>

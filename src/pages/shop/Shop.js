@@ -116,7 +116,7 @@ export default function Projec(props) {
           <Grid container spacing={6}>
             {products.map(product=> 
             <Grid item xs={4} className={classes.product} >
-              <Product product={product} addToCart={addToCart}/>
+              <Product product={product} addToCart={addToCart} sellerID={id}/>
             </Grid>
             )}
           </Grid>

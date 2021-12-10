@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Projec({ addToCart,product}) {
+export default function Projec({ addToCart,product,sellerID}) {
   const classes = useStyles();
   useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
@@ -111,7 +111,7 @@ export default function Projec({ addToCart,product}) {
             size="small"
             color="primary"
             variant="outlined"
-            onClick={()=>addToCart( product)}
+            onClick={()=>addToCart( product,false,sellerID)}
             >
             <AddShoppingCartIcon className={classes.addToshop} fontSize="small"/>
             </IconButton> 
@@ -122,7 +122,7 @@ export default function Projec({ addToCart,product}) {
             color="primary"
             variant="outlined"
             startIcon={<AddShoppingCartIcon />}
-            onClick={()=>addToCart( product,true)}
+            onClick={()=>addToCart( product,true,sellerID)}
             >
             & checkout
             </Button> 
