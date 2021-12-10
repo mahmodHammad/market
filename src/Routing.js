@@ -21,78 +21,14 @@ const products = [
   {
     id:"prod1",
     title:"EM tee",
-    size:"L",
-    price:4000,
-    avatar:Avatar,
+    price:40,
     description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
-    images:[
-      {
-        img: p1,
-        alt: 'Image',
-        cols: 4,
-      },
-    ]
   },
   {
-    id:"prod1",
-    title:"EM tee",
-    size:"L",
-    price:4000,
-    avatar:Avatar,
+    id:"prod12",
+    title:"Hello tee",
+    price:30,
     description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
-    images:[
-      {
-        img: p1,
-        alt: 'Image',
-        cols: 4,
-      },
-    ]
-  },
-
-  {
-    id:"prod1",
-    title:"EM tee",
-    size:"L",
-    price:4000,
-    avatar:Avatar,
-    description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
-    images:[
-      {
-        img: p1,
-        alt: 'Image',
-        cols: 4,
-      },
-    ]
-  },
-  {
-    id:"prod1",
-    title:"EM tee",
-    size:"L",
-    price:4000,
-    avatar:Avatar,
-    description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
-    images:[
-      {
-        img: p1,
-        alt: 'Image',
-        cols: 4,
-      },
-    ]
-  },
-  {
-    id:"prod1",
-    title:"EM tee",
-    size:"L",
-    price:4000,
-    avatar:Avatar,
-    description:"  THE EM TEE, A REDISCOVERY OF THE FLEXIBLE CAGE THAT GIVES OUR BODIES SHAPE.",
-    images:[
-      {
-        img: p1,
-        alt: 'Image',
-        cols: 4,
-      },
-    ]
   },
   ]
 const useStyles = makeStyles(theme => ({
@@ -108,6 +44,7 @@ const useStyles = makeStyles(theme => ({
 export default function Projec({ Cart,theme }) {
   const classes = useStyles();
   const [draweOpen, SetdraweOpen] = useState(false);
+  const [creadit, setcreadit] = useState(40);
   const [cartData, SetcartData] = useState([
   ]);
 
@@ -136,18 +73,22 @@ const setsize=(itemID,newsize)=>{
 
   const addToCart = (item,openDrawer)=>{
     const newItem = {...item}
-
-    newItem.quan=1
-    const uniqueID = Math.ceil(Math.random()*100000000)
-    newItem.id = uniqueID
-    SetcartData([...cartData,newItem])
+    const found = cartData.findIndex(c=>c.id==item.id)
+    if(found == -1){
+      newItem.quan=1
+      SetcartData([...cartData,newItem])
+    }else{
+      cartData[found].quan +=1
+      SetcartData([...cartData])
+    }
+    // const uniqueID = Math.ceil(Math.random()*100000000)
+    // newItem.id = uniqueID
 
     if(openDrawer){
       SetdraweOpen( true );
     }else{
       
     }
-   
     // const indd = cartData.findIndex(cd=>id===cd.id)
     // if(indd !==-1){
     //   // EXISTED
@@ -158,8 +99,6 @@ const setsize=(itemID,newsize)=>{
     //   item.quan=1
     //   SetcartData([...cartData,item])
     // }
-  
-    
   }
 
   const increaseQuantitly = (itemID,sign=1)=>{
@@ -171,6 +110,24 @@ const setsize=(itemID,newsize)=>{
      const old = [...cartData]
       SetcartData(old)
     }
+  }
+
+  const handleCheckout =(cartItems,totalCost)=>{
+    console.log("cartItems",cartItems)
+    console.log("totalCost",totalCost)
+    if(creadit >= totalCost){
+      onDeposit(-totalCost)
+      SetcartData([])
+      alert("Your Order is placed!")
+    }else{
+      alert("No enough mony ya fa2eer")
+    }
+  }
+
+  const onDeposit =(amount)=>{
+    console.log("amm",amount)
+    const newAmount = creadit+ Number(amount)
+    setcreadit(newAmount)
   }
 
   useEffect(() => {
@@ -191,16 +148,14 @@ const setsize=(itemID,newsize)=>{
           cartData={cartData}
         />
 
-            <Drawer removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
+            <Drawer handleCheckout={handleCheckout} removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} toggleDrawer={toggleDrawer} draweOpen={draweOpen}cartData={cartData} />
               <div style={{marginTop:84}}>
               <Switch>
-                <Route exact path="/" render={props => <Home/>} />
-                
-
-                <Route exact path="/profile" render={props => <Profile/>} />
+                <Route exact path="/" render={props => <Home creadit={creadit}/>} />
+                <Route exact path="/profile" render={props => <Profile onDeposit={onDeposit} creadit={creadit} setcreadit={setcreadit}/>} />
                 <Route exact path="/login" render={props => <SignIn/>} />
                 <Route exact path="/signUp" render={props => <Signup/>} />
-                <Route exact path="/dash" render={props => <Dash/>} />
+                <Route exact path="/dash" render={props => <Dash creadit={creadit}/>} />
                 <Route exact path="/success" render={props => <Sucess/>} />
                 <Route exact path="/shop" render={props => <Shop cartData={cartData} addToCart={addToCart} toggleDrawer={toggleDrawer} products={products}/>}/>
                 <Route exact path="/checkout" render={props => <Checkout cartData={cartData}/>} />

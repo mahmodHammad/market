@@ -36,25 +36,16 @@ const useStyles = makeStyles(theme => ({
   }
   }))
 
-export default function SignIn({setOpen,product,isCreate,onSubmit}) {
+export default function SignIn({setOpen,onSubmit}) {
   const classes = useStyles();
-  console.log("product",product)
-  const [Name, setName] = useState(product?product.name:"");
-  const [Price, setPrice] = useState(product?product.price:0);
-  const [Description, setDescription] = useState(product?product.description:"");
-  console.log("Title",Name)
+  const [Price, setPrice] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = {
-      name: Name,
-      price: Price,
-      description:Description,
-      id:product.id
-    }
+   
     // eslint-disable-next-line no-console
     setOpen(false)
-    onSubmit(data)
+    onSubmit(Price)
   };
 
   const onChange = (ev,setTarget)=>{
@@ -67,24 +58,15 @@ export default function SignIn({setOpen,product,isCreate,onSubmit}) {
         <Box
         className={classes.box}
         >
-          <Typography component="h1" variant="h5">
-            {isCreate?"Add a new product":"Update a product"}
+          <Typography component="h1" variant="h6">
+            Despoit money to your account
           </Typography>
           <Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
         <Grid container spacing={2}>
-        <Grid item xs={6}>
-
-            <TextField
-              required
-              onChange={e=>onChange(e,setName)}
-              margin="normal"
-              fullWidth
-              id="name"
-              value={Name}
-              label="Product name"
-              name="name"
-              autoFocus
-            />
+        <Grid alignItems="center" item xs={6}>
+        <Typography style={{paddingTop:30}}>
+            Amount:
+          </Typography>
           </Grid>
 
           <Grid item xs={6}>
@@ -102,20 +84,9 @@ export default function SignIn({setOpen,product,isCreate,onSubmit}) {
             />
           </Grid>
           </Grid>
-
-           <TextField
-              onChange={e=>onChange(e,setDescription)}
-              margin="normal"
-              fullWidth
-              name="description"
-              label="description"
-              rows={3}
-              multiline={true}
-              id="description"
-              value={Description}
-
-            />
+ 
             <Button
+            style={{marginTop:20}}
               type="submit"
               fullWidth
               variant="contained"

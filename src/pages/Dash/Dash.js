@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Sucess() {
+export default function Sucess({creadit}) {
     const [orders,setOrders]  = useState([])
   const classes = useStyles();
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function Sucess() {
         <Container>
           <div className={classes.header}>
               <Typography className={classes.headerItem}> Hello: Mahmoud </Typography>
-              <Typography className={classes.headerItem}> Current Credit: 50$ </Typography>
+              <Typography className={classes.headerItem}> Current Credit: ${creadit} </Typography>
               <Button component={Link} to="/profile" variant="contained"> Your Dashboard </Button> 
           </div>
           <Typography variant="h5" justifyContent="center" align="center">

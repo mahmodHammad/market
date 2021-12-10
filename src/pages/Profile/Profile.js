@@ -8,11 +8,12 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import IconButton from '@material-ui/core/IconButton';
 import Item from "./components/Item"
-
+import AddIcon from '@material-ui/icons/Add';
 // import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import Edit from "./components/Edit"
 
 const useStyles = makeStyles(theme => ({
 
@@ -44,39 +45,72 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
+export default function Projec({ creadit,setcreadit,onDeposit}) {
   const classes = useStyles();
+  const [openAdd, setopenAdd] = useState(false);
+  const [openCredit, setopenCredit] = useState(false);
 
   const [YourProducts,setYourProducts]  = useState([
     {
+        id:"1",
         name:"first porduct",
         price:500,
         description:"this is the description of the product",
         isMine:true,
     }, {
+      id:"2",
         name:"sec porduct",
         price:300,
         description:"this is the description of the product",
         isMine:true,
     }, {
+      id:"3",
         name:"other porduct",
         price:900,
         description:"this is the description of the product",
         isMine:true,
     }
 ])
-  useEffect(() => {
+const onDelete = (id)=>{
+  const newProducts = YourProducts.filter(p=>p.id!==id)
+  setYourProducts(newProducts)
+}
+
+const onCreate = (data)=>{
+  const old = [...YourProducts,data]
+  setYourProducts(old)
+  console.log("Prouct created",data)
+}
+
+const onUpdate = (data)=>{
+  const changedIndex= YourProducts.findIndex(p=>p.id==data.id)
+  const old = [...YourProducts]
+  old[changedIndex]=data
+  console.log("UPPPPPPP",data)
+  console.log("old",old)
+  setYourProducts(old)
+}
+
+
+
+useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
   });
 
   return (
     <div className={classes.root}>
+    <Edit open={openAdd} setOpen={setopenAdd} isCreate={true} onSubmit={onCreate} onDeposit={onDeposit} />
+    <Edit open={openCredit} setOpen={setopenCredit} isCreate={true} onSubmit={onCreate} isDeposit={true} onDeposit={onDeposit} />
+
         <Container  className = {classes.body}>
         <div className={classes.header}>
-              <Typography className={classes.headerItem}> Current Credit: $50 </Typography>
+              <Typography className={classes.headerItem}> Current Credit: ${creadit} </Typography>
          <div>
-              <Button size="small" style={{marginRight:20}} component={Link} to="/profile" variant="outlined"> Deposit credit </Button> 
-              <Button size="small" component={Link} to="/profile" variant="outlined"> Your Dashboard </Button> 
+              <Button size="small" style={{marginRight:20}} onClick={()=>setopenCredit(true)} variant="outlined"> Deposit credit </Button> 
+              <Button 
+              onClick={()=>setopenAdd(true)}
+              startIcon={<AddIcon/>}
+              size="small" variant="contained"> Add prodcut </Button> 
         </div>
        
           </div>
@@ -86,7 +120,7 @@ export default function Projec({ addToCart,products,toggleDrawer ,cartData}) {
  
         <Grid container spacing={6}>
             {YourProducts.map(product=>  <Grid item xs={4} className={classes.product} >
-                <Item product={product}/>
+                <Item product={product} onUpdate={onUpdate} onDelete={onDelete}/>
             </Grid>
             )}
          </Grid>    

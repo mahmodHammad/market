@@ -83,16 +83,12 @@ export default function CartItem({removeItem,size, setsize, productID,increaseQu
  
   return (
     <ListItem alignItems="center" className={classes.listItemStyle}>
-        <ListItemAvatar>
-            {/* <img src={p1} width={60} height={60}/> */}
-        <Avatar alt="Remy Sharp" src={img} className={classes.avLarge}/>
-        </ListItemAvatar>
+  
         <ListItemText
         primary={title}
         className={classes.title}
         secondary={
             <div className={classes.sec}>
-               <Selector id={productID} size={size} setsize={setsize} />
             <Typography
                 component="span"
                 variant="body2"
@@ -108,7 +104,7 @@ export default function CartItem({removeItem,size, setsize, productID,increaseQu
                   <Button
                   className={classes.DeleteBtn}
                   size="small"
-                  color="primary"
+                  color="secondary"
                   onClick={()=>removeItem(productID)}
                   startIcon={<DeleteForeverIcon size="small" fontSize="small" />}
                   >
@@ -116,7 +112,7 @@ export default function CartItem({removeItem,size, setsize, productID,increaseQu
                   </Button>    
                 </div>
                 <Typography variant="body2" aria-label="comments"className={classes.priceLable} >
-                    ${price/100}.00 USD
+                    ${price}USD
                 </Typography>
                 
             </div>

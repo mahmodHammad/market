@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
 }))
         
 
-export default function Cat( props) {
-  console.log("props",props)
+export default function Cat( {creadit}) {
+
   const classes = useStyles();
   const [Tocken,setTocken]  = useState("thisistocken")
 
@@ -47,7 +47,7 @@ export default function Cat( props) {
           draweOpen={()=>console.log("")}
           toggleDrawer={()=>console.log("")}
         /> */}
-        <Dash/>
+        <Dash creadit={creadit}/>
     </div>
       </React.Fragment>
 

@@ -84,13 +84,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Projec({ product}) {
+export default function Projec({ product,onDelete,onUpdate}) {
   const [openEdits, setopenEdits] = useState(false);
 
   const classes = useStyles();
   useEffect(() => {
     // const info = AllProjects.find(e => e.id === projId);
   });
+ 
 
   return (
           <Card className={classes.product} variant="outlined">
@@ -109,8 +110,8 @@ export default function Projec({ product}) {
             ${product.price}
         </Typography>
       <Button size="small" variant="contained" onClick={()=>setopenEdits(true)} >Edit</Button>
-      <Button size="small" variant="contained" color="secondary" >Remove</Button>
-    <Edit open={openEdits} setOpen={setopenEdits} />
+      <Button onClick={()=>onDelete(product.id)} size="small" variant="contained" color="secondary" >Remove</Button>
+    <Edit product={product} open={openEdits} setOpen={setopenEdits} isCreate={false} onSubmit={onUpdate} />
      </CardActions>
     </div>
     </Card>

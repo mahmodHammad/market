@@ -10,7 +10,7 @@ const useStyles = makeStyles({
 
 });
 
-export default function TemporaryDrawer({removeItem,setsize,increaseQuantitly,draweOpen,toggleDrawer,cartData}) {
+export default function TemporaryDrawer({handleCheckout,removeItem,setsize,increaseQuantitly,draweOpen,toggleDrawer,cartData}) {
  
     useEffect(() => {
         
@@ -20,7 +20,7 @@ export default function TemporaryDrawer({removeItem,setsize,increaseQuantitly,dr
     const classes = useStyles();
   return (
     <Drawer className={classes.root} anchor="right" open={draweOpen} onClose={()=>toggleDrawer( false)}>
-        <CartItem removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} cartData={cartData} toggleDrawer={toggleDrawer}/>
+        <CartItem handleCheckout={handleCheckout} removeItem={removeItem} setsize={setsize} increaseQuantitly={increaseQuantitly} cartData={cartData} toggleDrawer={toggleDrawer}/>
     </Drawer>
   );
 }

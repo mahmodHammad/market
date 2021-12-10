@@ -13,7 +13,7 @@ import handleCheckout from "./Strip"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 380,
+    width: 280,
     background:"#060606",
     height:"100vh",
     padding:10,
@@ -77,7 +77,7 @@ empty:{
 }
 }));
 
-export default function Cart({removeItem,setsize,increaseQuantitly,cartData,toggleDrawer}) {
+export default function Cart({handleCheckout,removeItem,setsize,increaseQuantitly,cartData,toggleDrawer}) {
   const classes = useStyles();
   const GetTotalCost  = ()=>{
     let totalCost = 0
@@ -87,33 +87,21 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
     return totalCost
   }
   
-  const formatforcheckout = ()=>{
-  const formatted =   cartData.map(c=>{
-      const name = `${c.title} ${c.size}`  
-      const data = {
-        name,
-        amount: c.price,
-        images:[`https://terraform.live/${c.avatar}`], 
-        quantity:c.quan
-      }
-      return data
-    })
-     return formatted
-  }
+  // const formatforcheckout = ()=>{
+  // const formatted =   cartData.map(c=>{
+  //     const name = `${c.title} ${c.size}`  
+  //     const data = {
+  //       name,
+  //       amount: c.price,
+  //       images:[`https://terraform.live/${c.avatar}`], 
+  //       quantity:c.quan
+  //     }
+  //     return data
+  //   })
+  //    return formatted
+  // }
 
-  const callapi=()=>{
-  const fdata = { 
-    
-    Title:"Allah akbar",
-    Price: 17,
-    Description:"Hello my product",
-    AvatarImg: "https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
-    Quantity: 1,
-    Size: "L",
-    Images: ["https://cdn.wallpapersafari.com/38/45/KftFVL.jpg"]}
-
-    axios.get("http://nodejsserv.terraform.live/products",fdata).then(r=>{
-}).catch(e=>console.log("a7aaaa",e))}
+ 
   
 // console.table([{title:"heloo",age:12},{title:"ffheloo",age:122},{title:"hffeloo",age:12},])
 
@@ -133,7 +121,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
 
       <div className={classes.lay}>
           <Typography className={classes.totlaCost}>
-          Total Cost: ${GetTotalCost()/100}.00
+          Total Cost: ${GetTotalCost()}
         </Typography>
 
         <div className={classes.btnbottom}>
@@ -157,7 +145,7 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
             onClick={()=>{
               toggleDrawer( false)
               // formatforcheckout()
-              handleCheckout(formatforcheckout())
+              handleCheckout(cartData,GetTotalCost())
             }
           }
           >
@@ -170,7 +158,6 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
           cart empty!
         </Typography>
 
-      
        <Button
        fullWidth
             className={classes.button}
@@ -183,7 +170,6 @@ export default function Cart({removeItem,setsize,increaseQuantitly,cartData,togg
             >
             Continue shopping
             </Button>  </div>}
-
     </div>
   );
 }

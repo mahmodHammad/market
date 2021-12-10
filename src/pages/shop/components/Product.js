@@ -102,7 +102,7 @@ export default function Projec({ addToCart,product}) {
         <div className={classes.productAction}>
       <CardActions>
             <Typography className={classes.price} variant="body2" >
-                ${product.price/100}.00
+                ${product.price}
             </Typography>
 
             <IconButton

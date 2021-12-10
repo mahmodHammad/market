@@ -5,7 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from "@material-ui/core/styles";
 import EditForm from "./EditForm"
- 
+import Deposit from "./Deposit"
+
 const useStyles = makeStyles(theme => ({
 
   root: {
@@ -13,28 +14,15 @@ const useStyles = makeStyles(theme => ({
     justifyContent:"center",
     alignItems:"center",
     flexFlow:"column",
-
     position: "fixed",
     top: "calc(50vh - 140px )",
     left: "calc(50% - 200px)"
   },
-  box:{
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  
-  //   bgcolor: 'background.paper',
-    background: '#fff',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,   
-},
 
 }));
 
 
-export default function BasicModal({open,setOpen}) {
+export default function BasicModal({product,open,setOpen,isCreate,onSubmit,isDeposit,onDeposit}) {
   const classes = useStyles();
 
   return (
@@ -46,8 +34,8 @@ export default function BasicModal({open,setOpen}) {
         aria-describedby="modal-modal-description"
       >
         <Box  className={classes.root} >
-         
-         <EditForm/>
+      {isDeposit?<Deposit setOpen={setOpen} onSubmit={onDeposit}/>: <EditForm setOpen={setOpen} product={product} isCreate={isCreate} onSubmit={onSubmit} />}
+              
         </Box>
       </Modal>
     </div>
